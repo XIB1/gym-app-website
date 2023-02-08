@@ -1,0 +1,11 @@
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+#add-entry-form {
+  padding: 10px;
+  background-color: lightgray;
+  border-radius: 5px;
+}
