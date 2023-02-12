@@ -7,6 +7,8 @@
   $field6 = $_POST["field6"];
   $field7 = $_POST["field7"];
   
+  echo "testing"
+
   // Connect to database and insert the new entry
   $conn = new mysqli("34.88.150.1", "app-user", "983298", "gym-db");
 
@@ -24,6 +26,6 @@
   else {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
-  
+
   $conn->close();
 ?>
