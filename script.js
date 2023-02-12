@@ -16,31 +16,31 @@ window.onload = function() {
         var row = document.createElement("tr");
 
         var field1 = document.createElement("td");
-        field1.textContent = entry.field1;
+        field1.textContent = entry.Date;
         row.appendChild(field1);
 
         var field2 = document.createElement("td");
-        field2.textContent = entry.field2;
+        field2.textContent = entry.Time;
         row.appendChild(field2);
 
         var field3 = document.createElement("td");
-        field3.textContent = entry.field3;
+        field3.textContent = entry.Exercise;
         row.appendChild(field3);
 
         var field4 = document.createElement("td");
-        field4.textContent = entry.field4;
+        field4.textContent = entry.Weight;
         row.appendChild(field4);
 
         var field5 = document.createElement("td");
-        field5.textContent = entry.field5;
+        field5.textContent = entry.Sets;
         row.appendChild(field5);
 
         var field6 = document.createElement("td");
-        field6.textContent = entry.field6;
+        field6.textContent = entry.Reps;
         row.appendChild(field6);
 
         var field7 = document.createElement("td");
-        field7.textContent = entry.field7;
+        field7.textContent = entry.Effort;
         row.appendChild(field7);
 
         tableBody.appendChild(row);
