@@ -8,7 +8,7 @@ window.onload = function() {
     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
       // Parse the response from the server as JSON
       var entries = JSON.parse(xhr.responseText);
-      window.alert(entries)
+      window.alert(entries[0])
 
       // Loop through the entries and add a row to the table for each entry
       for (var i = 0; i < entries.length; i++) {
