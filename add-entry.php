@@ -1,4 +1,6 @@
 <?php
+  ini_set('display_errors', 1);
+
   $field1 = $_POST["field1"];
   $field2 = $_POST["field2"];
   $field3 = $_POST["field3"];
