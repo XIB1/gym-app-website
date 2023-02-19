@@ -3,6 +3,8 @@
 // Connect to the database
 $conn = mysqli_connect("34.88.150.1", "app-user", "983298", "gym-db");
 
+//var_dump($conn)
+
 // Check the connection
 if (!$conn) {
   header("HTTP/1.1 500 Internal Server Error");

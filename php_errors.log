@@ -1,0 +1,12 @@
+[19-Feb-2023 19:56:15 UTC] PHP Warning:  Undefined array key "field1" in C:\repos\gym-app-website\add-entry.php on line 5
+[19-Feb-2023 19:56:15 UTC] PHP Warning:  Undefined array key "field2" in C:\repos\gym-app-website\add-entry.php on line 6
+[19-Feb-2023 19:56:15 UTC] PHP Warning:  Undefined array key "field3" in C:\repos\gym-app-website\add-entry.php on line 7
+[19-Feb-2023 19:56:15 UTC] PHP Warning:  Undefined array key "field4" in C:\repos\gym-app-website\add-entry.php on line 8
+[19-Feb-2023 19:56:15 UTC] PHP Warning:  Undefined array key "field5" in C:\repos\gym-app-website\add-entry.php on line 9
+[19-Feb-2023 19:56:15 UTC] PHP Warning:  Undefined array key "field6" in C:\repos\gym-app-website\add-entry.php on line 10
+[19-Feb-2023 19:56:15 UTC] PHP Warning:  Undefined array key "field7" in C:\repos\gym-app-website\add-entry.php on line 11
+[19-Feb-2023 20:03:17 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect date value: '0' for column 'Date' at row 1 in C:\repos\gym-app-website\add-entry.php:34
+Stack trace:
+#0 C:\repos\gym-app-website\add-entry.php(34): mysqli->query('INSERT INTO lif...')
+#1 {main}
+  thrown in C:\repos\gym-app-website\add-entry.php on line 34
