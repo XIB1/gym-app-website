@@ -1,6 +1,6 @@
 window.onload = function() {
   var tableBody = document.getElementById("table-body");
-
+  
   // Make a request to the server to retrieve the data from the database
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "get-entries.php", true);
@@ -47,12 +47,12 @@ window.onload = function() {
     }
   };
   xhr.send();
-
+  
 
   document.getElementById("add-entry-button").addEventListener("click", function() {
     document.getElementById("add-entry-form").style.display = "block";
   });
-    
+
   document.getElementById("add-entry-form").addEventListener("submit", function(event) {
     event.preventDefault();
     var field1 = document.getElementById("field1").value;
