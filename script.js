@@ -1,5 +1,13 @@
 window.onload = function() {
+
+  var morning = new Date("Jan 1, 2023 05:00");
+  var day = new Date("Jan 1, 2023 10:00");
+  var evening = new Date("Jan 1, 2023 17:00");
+  var night = new Date("Jan 1, 2023 22:00");
+
   var tableBody = document.getElementById("table-body");
+
+  var sessionCont = document.getElementById("session-container")
   
   // Make a request to the server to retrieve the data from the database
   var xhr = new XMLHttpRequest();
@@ -43,6 +51,25 @@ window.onload = function() {
         row.appendChild(field7);
 
         tableBody.appendChild(row);
+
+        cont = document.createElement("div");
+        cont.classList.add("sesscont");
+        
+        img = document.createElement("img");
+
+        var pic = new String;
+        var timestamp = new Date("Jan 1, 2023 " +  entry.Time);
+        //window.alert(timestamp > morning);
+
+        if (timestamp >= morning && timestamp < day) {pic = "morning.png"}
+        if (timestamp >= day && timestamp < evening) {pic = "day.png"}
+        if (timestamp >= evening && timestamp < night) {pic = "evening.png"}
+        if (timestamp >= night || timestamp < morning) {pic = "night.png"}
+        img.src = "img/" + pic;
+        
+        cont.appendChild(img);
+
+        sessionCont.appendChild(cont);
       }
     }
   };

@@ -16,52 +16,45 @@ table, th, td {
   bottom:0px;
   height:10%;
   width:100%;
-  background:#999;
+  background:#b1b0b0;
   border-left: 20px #000;
   border-right: 20px #000;
+}
+
+.option {
+  position:relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background:rgb(32, 28, 28);
+  color: honeydew;
 }
 
 #plus {
-  position:relative;
   float:left;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   left:0px;
   bottom:0px;
-  width:49.5%;
+  width:49.8%;
   height:100%;
 
-  background:#900;
-  border-left: 20px #000;
-  border-right: 20px #000;
+  
 }
 
 #minus {
-  position:relative;
   float:right;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   left:0px;
   bottom:0px;
-  width:49.5%;
+  width:49.8%;
   height:100%;
-
-  background:#900;
-  border-left: 20px #000;
-  border-right: 20px #000;
 }
 
-#line {
-  position:relative;
-  float: left;
-  border-style: solid;
-  left:0px;
-  bottom:0px;
-  border-width: 20px;
-  width: 1%;
-  height: 100%;
+.sesscont {
+  float: bottom;
+  height: 100px;
+  width: 95%;
+  padding-bottom: 200px;
+  padding: 20px 20px 20px 20px;
 }
