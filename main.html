@@ -3,9 +3,10 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="script.js" defer></script>
+  <script type = "text/javascript" src="script.js" defer></script>
   <title>Mobile Website</title>
 </head>
+
 <body>
   <h1>Mobile Website</h1>
   <table id="entries">
@@ -26,20 +27,28 @@
   </table>
   <button id="add-entry-button">Add Entry</button>
   <div id="session-container">container</div>
-  <form id="add-entry-form" style="display: none;">
-    <input type="text" id="field1" placeholder="Field 1"><br>
-    <input type="text" id="field2" placeholder="Field 2"><br>
-    <input type="text" id="field3" placeholder="Field 3"><br>
-    <input type="text" id="field4" placeholder="Field 4"><br>
-    <input type="text" id="field5" placeholder="Field 5"><br>
-    <input type="text" id="field6" placeholder="Field 6"><br>
-	<input type="text" id="field7" placeholder="Field 7"><br>
-    <button type="submit">Submit</button>
-  </form>
+
+
+  <div id="circle-button" data-status="button" >+
+    <form id="add-entry-form" style="display: none;">
+      <input type="text" id="field1" placeholder="Field 1"><br>
+      <input type="text" id="field2" placeholder="Field 2"><br>
+      <input type="text" id="field3" placeholder="Field 3"><br>
+      <input type="text" id="field4" placeholder="Field 4"><br>
+      <input type="text" id="field5" placeholder="Field 5"><br>
+      <input type="text" id="field6" placeholder="Field 6"><br>
+    <input type="text" id="field7" placeholder="Field 7"><br>
+      <button type="submit">Submit</button>
+      <button type="button" id="cancel-button">Cancel</button>
+    </form>
+  </div>
+  
+  <!-- 
   <footer id="footer">
       <div id="plus" class="option">+</div>
       <div id="line"></div>
       <div id="minus" class="option">-</div>
   </footer>
+   -->
 </body>
 </html>

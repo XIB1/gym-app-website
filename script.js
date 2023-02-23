@@ -56,6 +56,7 @@ window.onload = function() {
         cont.classList.add("sesscont");
         
         img = document.createElement("img");
+        img.classList.add("daytime-img")
 
         var pic = new String;
         var timestamp = new Date("Jan 1, 2023 " +  entry.Time);
@@ -81,6 +82,7 @@ window.onload = function() {
   });
 
   document.getElementById("add-entry-form").addEventListener("submit", function(event) {
+    event.stopPropagation();
     event.preventDefault();
     var field1 = document.getElementById("field1").value;
     var field2 = document.getElementById("field2").value;
@@ -90,8 +92,31 @@ window.onload = function() {
     var field6 = document.getElementById("field6").value;
     var field7 = document.getElementById("field7").value;
     addEntry(field1, field2, field3, field4, field5, field6, field7);
+
+    var button = document.getElementById("circle-button");
+    button.dataset.status = "button";
+
   });
-    
+
+  document.getElementById("circle-button").addEventListener("click", function() {
+    var button = document.getElementById("circle-button");
+
+    if (button.dataset.status == "button") {
+      button.dataset.status = "box";
+      document.getElementById("add-entry-form").style.display = "block";
+    } //else {
+    //  button.dataset.status = "button";
+    //  document.getElementById("add-entry-form").style.display = "none";
+    //}
+  });
+
+  document.getElementById("cancel-button").addEventListener("click", function(event) {
+    event.stopPropagation();
+    var button = document.getElementById("circle-button");
+    button.dataset.status = "button";
+    document.getElementById("add-entry-form").style.display = "none";
+  });
+
   function addEntry(field1, field2, field3, field4, field5, field6, field7) {
     
     var xhr = new XMLHttpRequest();

@@ -1,3 +1,8 @@
+body {
+  background-color: #222;
+}
+
+
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
@@ -20,7 +25,7 @@ table, th, td {
   border-left: 20px #000;
   border-right: 20px #000;
 }
-
+/*
 .option {
   position:relative;
   display: flex;
@@ -50,11 +55,73 @@ table, th, td {
   width:49.8%;
   height:100%;
 }
-
+*/
 .sesscont {
   float: bottom;
   height: 100px;
   width: 95%;
   padding-bottom: 200px;
   padding: 20px 20px 20px 20px;
+}
+
+#circle-button {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  
+  color: #000;
+
+  
+  font-size: 6vw;
+  font-weight: bold;
+
+  bottom: 1vw;
+  right: 1vw;
+  width: 7vw;
+  height: 7vw;
+  
+  border: 0.5vw solid black;
+  border-radius: 100%;
+
+  transition: all 250ms;
+  transition-timing-function: ease-in-out;
+}
+
+#circle-button[data-status="box"] {
+  
+  background-color: #333;
+  color: rgba(0, 0, 0, 0);
+
+  height: 90vh;
+  width: 90vw;
+  bottom: 5%;
+  right: 5%;
+
+  position: float;
+
+
+  border-radius: 3vmin 3vmin;
+  border: 0.2vw solid black;
+}
+
+#circle-button[data-status="button"] {
+  color: #000;
+
+  bottom: 1vw;
+  right: 1vw;
+  width: 7vw;
+  height: 7vw;
+
+  position: fixed;
+
+
+  border: 0.5vw solid black;
+  border-radius: 100%;
+}
+
+.daytime-img {
+  border: 2px solid black;
+  border-radius: 30%;
 }
