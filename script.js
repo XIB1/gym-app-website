@@ -1,5 +1,7 @@
 window.onload = function() {
 
+  var entries = new Object()
+
   var morning = new Date("Jan 1, 2023 05:00");
   var day = new Date("Jan 1, 2023 10:00");
   var evening = new Date("Jan 1, 2023 17:00");
@@ -8,6 +10,14 @@ window.onload = function() {
   var tableBody = document.getElementById("table-body");
 
   var sessionCont = document.getElementById("session-container")
+
+  function getDistinctValues(arr, col) {
+    const distinct = new Set();
+    for (const obj of arr) {
+      distinct.add(obj[col]);
+    }
+    return Array.from(distinct);
+  };
   
   // Make a request to the server to retrieve the data from the database
   var xhr = new XMLHttpRequest();
@@ -15,9 +25,61 @@ window.onload = function() {
   xhr.onreadystatechange = function() {
     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
       // Parse the response from the server as JSON
-      var entries = JSON.parse(xhr.responseText);
+      entries = JSON.parse(xhr.responseText);
 
-      // Loop through the entries and add a row to the table for each entry
+      //console.log(getDistinctValues(entries, "Date"));
+      //console.log(getDistinctValues(entries, "Date").sort().reverse());
+
+      const dates = getDistinctValues(entries, "Date").sort().reverse();
+
+      for (const date in dates) {
+
+        var entry = entries.filter(item => item.Date == dates[date]);
+
+        var excer = new String();
+        var time = new String(entry[0].Time);
+        var totWeight = new Number();
+
+        console.log(typeof entry[0].Time);
+        
+        for (row in entry) {
+
+          excer = excer.concat(entry[row].Exercise, ", ");
+          if (time > entry[row].Time) {
+            time = entry[row].Time;
+          };
+          totWeight = totWeight + entry[row].Sets * entry[row].Reps * entry[row].Weight
+
+        };
+
+        console.log(excer.slice(0 , -2), time, totWeight);
+
+
+
+
+        cont = document.createElement("div");
+        cont.classList.add("sesscont");
+        
+        img = document.createElement("img");
+        img.classList.add("daytime-img")
+
+        var pic = new String;
+        var timestamp = new Date("Jan 1, 2023 " +  time);
+        //window.alert(timestamp > morning);
+
+        if (timestamp >= morning && timestamp < day) {pic = "morning.png"}
+        if (timestamp >= day && timestamp < evening) {pic = "day.png"}
+        if (timestamp >= evening && timestamp < night) {pic = "evening.png"}
+        if (timestamp >= night || timestamp < morning) {pic = "night.png"}
+        img.src = "img/" + pic;
+        
+        cont.appendChild(img);
+
+        sessionCont.appendChild(cont);
+      };
+
+        
+      /* Loop through the entries and add a row to the table for each entry
       for (var i = 0; i < entries.length; i++) {
         var entry = entries[i];
         var row = document.createElement("tr");
@@ -51,35 +113,17 @@ window.onload = function() {
         row.appendChild(field7);
 
         tableBody.appendChild(row);
-
-        cont = document.createElement("div");
-        cont.classList.add("sesscont");
-        
-        img = document.createElement("img");
-        img.classList.add("daytime-img")
-
-        var pic = new String;
-        var timestamp = new Date("Jan 1, 2023 " +  entry.Time);
-        //window.alert(timestamp > morning);
-
-        if (timestamp >= morning && timestamp < day) {pic = "morning.png"}
-        if (timestamp >= day && timestamp < evening) {pic = "day.png"}
-        if (timestamp >= evening && timestamp < night) {pic = "evening.png"}
-        if (timestamp >= night || timestamp < morning) {pic = "night.png"}
-        img.src = "img/" + pic;
-        
-        cont.appendChild(img);
-
-        sessionCont.appendChild(cont);
       }
+      */
     }
   };
   xhr.send();
   
-
+  /*
   document.getElementById("add-entry-button").addEventListener("click", function() {
     document.getElementById("add-entry-form").style.display = "block";
   });
+  */
 
   document.getElementById("add-entry-form").addEventListener("submit", function(event) {
     event.stopPropagation();

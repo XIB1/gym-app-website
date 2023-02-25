@@ -70,17 +70,15 @@ table, th, td {
   justify-content: center;
   align-items: center;
 
-  
   color: #000;
 
   
-  font-size: 6vw;
+  font-size: 10vw;
   font-weight: bold;
 
   bottom: 1vw;
   right: 1vw;
-  width: 7vw;
-  height: 7vw;
+
   
   border: 0.5vw solid black;
   border-radius: 100%;
@@ -102,7 +100,7 @@ table, th, td {
   position: float;
 
 
-  border-radius: 3vmin 3vmin;
+  border-radius: 1vmin 1vmin;
   border: 0.2vw solid black;
 }
 
@@ -111,13 +109,13 @@ table, th, td {
 
   bottom: 1vw;
   right: 1vw;
-  width: 7vw;
-  height: 7vw;
+  width: 25vw;
+  height: 25vw;
 
   position: fixed;
 
 
-  border: 0.5vw solid black;
+  border: 1vw solid black;
   border-radius: 100%;
 }
 
