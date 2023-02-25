@@ -66,6 +66,8 @@ table, th, td {
 
 #button-holder {
   position: relative;
+  width: 100%;
+  left: 0px;
 }
 
 #circle-button {
