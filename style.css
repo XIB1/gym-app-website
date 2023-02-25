@@ -81,8 +81,7 @@ table, th, td {
   font-size: 10vw;
   font-weight: bold;
 
-  bottom: 1vw;
-  right: 1vw;
+
 
   border: 0.5vw solid black;
   border-radius: 100%;
@@ -99,7 +98,7 @@ table, th, td {
   height: 90vh;
   width: 90vw;
   bottom: 5%;
-  right: 5%;
+  left: 5%;
 
   position: float;
 
