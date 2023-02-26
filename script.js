@@ -74,8 +74,7 @@ window.onload = function() {
         dat = new Date(dates[date]);
         dat = dat.toString();
         dat = parseInt(dat.slice(8, 10)) + " " + dat.slice(4, 7) + " " + dat.slice(11, 15);
-        console.log(dat);
-
+        
         var dateBox = document.createElement("div");
         dateBox.classList.add(...["date-box", "sess-info"]);
         dateBox.innerHTML = dat;
@@ -107,45 +106,7 @@ window.onload = function() {
         sessionCont.appendChild(cont);
 
       };
-
-        
-      /* Loop through the entries and add a row to the table for each entry
-      for (var i = 0; i < entries.length; i++) {
-        var entry = entries[i];
-        var row = document.createElement("tr");
-
-        var field1 = document.createElement("td");
-        field1.textContent = entry.Date;
-        row.appendChild(field1);
-
-        var field2 = document.createElement("td");
-        field2.textContent = entry.Time;
-        row.appendChild(field2);
-
-        var field3 = document.createElement("td");
-        field3.textContent = entry.Exercise;
-        row.appendChild(field3);
-
-        var field4 = document.createElement("td");
-        field4.textContent = entry.Weight;
-        row.appendChild(field4);
-
-        var field5 = document.createElement("td");
-        field5.textContent = entry.Sets;
-        row.appendChild(field5);
-
-        var field6 = document.createElement("td");
-        field6.textContent = entry.Reps;
-        row.appendChild(field6);
-
-        var field7 = document.createElement("td");
-        field7.textContent = entry.Effort;
-        row.appendChild(field7);
-
-        tableBody.appendChild(row);
-      }
-      */
-    }
+    };
   };
   xhr.send();
 
