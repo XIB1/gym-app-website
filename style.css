@@ -20,13 +20,6 @@ table, th, td {
   position: relative;
   width: 100%;
 }
-.sesscont {
-  float: bottom;
-  height: 75px;
-  width: 100%;
-  padding-bottom: 10px;
-  padding-top: 10px;
-}
 
 #button-holder {
   position: relative;
@@ -86,12 +79,33 @@ table, th, td {
   border-radius: 100%;
 }
 
-.daytime-img {
+.sesscont {
+  float: bottom;
   height: 75px;
+  width: 100%;
+  padding-bottom: 7px;
+  padding-top: 7px;
+
+}
+
+.sessboxcont {
+  height: 100%;
+  
+  border: 2px solid black;
+  border-radius: 25px;
+
+  background-color: #112933;
+}
+
+.daytime-img {
+  height: 74px;
   position: relative;
   float: left;
+  display: flex;
   border: 2px solid black;
   border-radius: 30%;
+
+  translate: -1px -1px;
 }
 
 .box-cont {

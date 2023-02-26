@@ -58,7 +58,7 @@ window.onload = function() {
         if (timestamp >= night || timestamp < morning) {pic = "night.png"};
         img.src = "img/" + pic;
         
-        cont.appendChild(img);
+        
 
 
         for (row in entry) {
@@ -71,10 +71,14 @@ window.onload = function() {
         };
 
         excer = excer.slice(0, -2);
+        dat = new Date(dates[date]);
+        dat = dat.toString();
+        dat = parseInt(dat.slice(8, 10)) + " " + dat.slice(4, 7) + " " + dat.slice(11, 15);
+        console.log(dat);
 
         var dateBox = document.createElement("div");
         dateBox.classList.add(...["date-box", "sess-info"]);
-        dateBox.innerHTML = dates[date];
+        dateBox.innerHTML = dat;
 
         var excBox = document.createElement("div");
         excBox.classList.add(...["exc-box", "sess-info"]);
@@ -87,11 +91,18 @@ window.onload = function() {
         var boxCont = document.createElement("div");
         boxCont.classList.add("box-cont");
 
+        var sessBoxCont = document.createElement("div");
+        sessBoxCont.classList.add("sessboxcont");
+
         boxCont.appendChild(dateBox);
         boxCont.appendChild(excBox);
 
-        cont.appendChild(boxCont);
-        cont.appendChild(weightBox);
+
+        sessBoxCont.appendChild(img);
+        sessBoxCont.appendChild(boxCont);
+        sessBoxCont.appendChild(weightBox);
+
+        cont.appendChild(sessBoxCont);
 
         sessionCont.appendChild(cont);
 
