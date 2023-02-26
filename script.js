@@ -73,11 +73,11 @@ window.onload = function() {
         excer = excer.slice(0, -2);
 
         var dateBox = document.createElement("div");
-        dateBox.classList.add("date-box");
+        dateBox.classList.add(...["date-box", "sess-info"]);
         dateBox.innerHTML = dates[date];
 
         var excBox = document.createElement("div");
-        excBox.classList.add("exc-box");
+        excBox.classList.add(...["exc-box", "sess-info"]);
         excBox.innerHTML = excer;
 
         var weightBox = document.createElement("div");
