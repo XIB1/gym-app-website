@@ -113,7 +113,8 @@ table, th, td {
   float: left;
 
   width: 50%;
-  height: 100%;
+  height: 99%;
+  padding-top: 1%;
 }
 
 .sess-info {
