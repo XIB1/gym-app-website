@@ -57,6 +57,10 @@ table, th, td {
   height:100%;
 }
 */
+#session-container {
+  position: relative;
+  width: 100%;
+}
 .sesscont {
   float: bottom;
   height: 100px;
