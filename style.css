@@ -1,8 +1,9 @@
-body {
+
+
+html,body{
+  overflow-x: hidden;
   background-color: #222;
 }
-
-
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
