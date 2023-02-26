@@ -40,42 +40,61 @@ window.onload = function() {
         var time = new String(entry[0].Time);
         var totWeight = new Number();
 
-        console.log(typeof entry[0].Time);
+
+
         
+        var cont = document.createElement("div");
+        cont.classList.add("sesscont");
+
+        var img = document.createElement("img");
+        img.classList.add("daytime-img");
+
+        var pic = new String;
+        var timestamp = new Date("Jan 1, 2023 " +  time);
+
+        if (timestamp >= morning && timestamp < day) {pic = "morning.png"};
+        if (timestamp >= day && timestamp < evening) {pic = "day.png"};
+        if (timestamp >= evening && timestamp < night) {pic = "evening.png"};
+        if (timestamp >= night || timestamp < morning) {pic = "night.png"};
+        img.src = "img/" + pic;
+        
+        cont.appendChild(img);
+
+
         for (row in entry) {
 
           excer = excer.concat(entry[row].Exercise, ", ");
           if (time > entry[row].Time) {
             time = entry[row].Time;
           };
-          totWeight = totWeight + entry[row].Sets * entry[row].Reps * entry[row].Weight
-
+          totWeight = totWeight + entry[row].Sets * entry[row].Reps * entry[row].Weight;
         };
 
-        console.log(excer.slice(0 , -2), time, totWeight);
+        excer = excer.slice(0, -2);
 
+        var dateBox = document.createElement("div");
+        dateBox.classList.add("date-box");
+        dateBox.innerHTML = dates[date];
 
+        var excBox = document.createElement("div");
+        excBox.classList.add("exc-box");
+        excBox.innerHTML = excer;
 
+        var weightBox = document.createElement("div");
+        weightBox.classList.add("weight-box");
+        weightBox.innerHTML = totWeight + " kg";
 
-        cont = document.createElement("div");
-        cont.classList.add("sesscont");
-        
-        img = document.createElement("img");
-        img.classList.add("daytime-img")
+        var boxCont = document.createElement("div");
+        boxCont.classList.add("box-cont");
 
-        var pic = new String;
-        var timestamp = new Date("Jan 1, 2023 " +  time);
-        //window.alert(timestamp > morning);
+        boxCont.appendChild(dateBox);
+        boxCont.appendChild(excBox);
 
-        if (timestamp >= morning && timestamp < day) {pic = "morning.png"}
-        if (timestamp >= day && timestamp < evening) {pic = "day.png"}
-        if (timestamp >= evening && timestamp < night) {pic = "evening.png"}
-        if (timestamp >= night || timestamp < morning) {pic = "night.png"}
-        img.src = "img/" + pic;
-        
-        cont.appendChild(img);
+        cont.appendChild(boxCont);
+        cont.appendChild(weightBox);
 
         sessionCont.appendChild(cont);
+
       };
 
         
