@@ -118,12 +118,6 @@ window.onload = function() {
     }
   };
   xhr.send();
-  
-  /*
-  document.getElementById("add-entry-button").addEventListener("click", function() {
-    document.getElementById("add-entry-form").style.display = "block";
-  });
-  */
 
   document.getElementById("add-entry-form").addEventListener("submit", function(event) {
     event.stopPropagation();
@@ -148,10 +142,7 @@ window.onload = function() {
     if (button.dataset.status == "button") {
       button.dataset.status = "box";
       document.getElementById("add-entry-form").style.display = "block";
-    } //else {
-    //  button.dataset.status = "button";
-    //  document.getElementById("add-entry-form").style.display = "none";
-    //}
+    } 
   });
 
   document.getElementById("cancel-button").addEventListener("click", function(event) {

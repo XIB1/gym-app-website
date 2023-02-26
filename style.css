@@ -15,48 +15,7 @@ table, th, td {
   background-color: lightgray;
   border-radius: 5px;
 }
-/*
-#footer {
-  position:fixed;
-  left:0px;
-  bottom:0px;
-  height:10%;
-  width:100%;
-  background:#b1b0b0;
-  border-left: 20px #000;
-  border-right: 20px #000;
-}
 
-.option {
-  position:relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background:rgb(32, 28, 28);
-  color: honeydew;
-}
-
-#plus {
-  float:left;
-
-  left:0px;
-  bottom:0px;
-  width:49.8%;
-  height:100%;
-
-  
-}
-
-#minus {
-  float:right;
-
-  left:0px;
-  bottom:0px;
-  width:49.8%;
-  height:100%;
-}
-*/
 #session-container {
   position: relative;
   width: 100%;
@@ -64,8 +23,9 @@ table, th, td {
 .sesscont {
   float: bottom;
   height: 100px;
-  width: 95%;
-  padding-bottom: 200px;
+  width: 100%;
+  padding-bottom: 20px;
+  padding-top: 20px;
   
 }
 
