@@ -5,6 +5,12 @@ function getDistinctValues(arr, col) {
   }
   return Array.from(distinct);
 };
+function removeElementsByClass(className){
+  const elements = document.getElementsByClassName(className);
+  while(elements.length > 0){
+      elements[0].parentNode.removeChild(elements[0]);
+  }
+}
 function populateEntries() {
   
   var entries = new Object()
@@ -100,6 +106,29 @@ function populateEntries() {
   };
   xhr.send();
 };
+function addEntry(field1, field2, field3, field4, field5, field6, field7) {
+  
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "add-entry.php", true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.onreadystatechange = function() {
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+
+      document.getElementById("add-entry-form").style.display = "none";
+
+      var button = document.getElementById("circle-button");
+      button.dataset.status = "button";
+      document.getElementById("add-entry-form").style.display = "none";
+
+      removeElementsByClass("sesscont");
+      populateEntries();
+    }
+  };
+  xhr.send("field1=" + encodeURIComponent(field1) + "&field2=" + encodeURIComponent(field2) +
+    "&field3=" + encodeURIComponent(field3) + "&field4=" + encodeURIComponent(field4) +
+    "&field5=" + encodeURIComponent(field5) + "&field6=" + encodeURIComponent(field6) + 
+    "&field7=" + encodeURIComponent(field7));
+};
 
 window.onload = function() {
 
@@ -126,7 +155,7 @@ window.onload = function() {
     var button = document.getElementById("circle-button");
 
     if (button.dataset.status == "button") {
-      button.dataset.status = "box";
+      button.dataset.status = "hidden";
       document.getElementById("add-entry-form").style.display = "block";
     } 
   });
@@ -137,37 +166,5 @@ window.onload = function() {
     button.dataset.status = "button";
     document.getElementById("add-entry-form").style.display = "none";
   });
-
-  function addEntry(field1, field2, field3, field4, field5, field6, field7) {
-    
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "add-entry.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function() {
-      if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-        var entriesTable = document.getElementById("entries").getElementsByTagName("tbody")[0];
-        var newRow = entriesTable.insertRow();
-        var cell1 = newRow.insertCell(0);
-        var cell2 = newRow.insertCell(1);
-        var cell3 = newRow.insertCell(2);
-        var cell4 = newRow.insertCell(3);
-        var cell5 = newRow.insertCell(4);
-        var cell6 = newRow.insertCell(5);
-        var cell7 = newRow.insertCell(6);
-        cell1.innerHTML = field1;
-        cell2.innerHTML = field2;
-        cell3.innerHTML = field3;
-        cell4.innerHTML = field4;
-        cell5.innerHTML = field5;
-        cell6.innerHTML = field6;
-        cell7.innerHTML = field7;
-        document.getElementById("add-entry-form").style.display = "none";
-      }
-    };
-    xhr.send("field1=" + encodeURIComponent(field1) + "&field2=" + encodeURIComponent(field2) +
-      "&field3=" + encodeURIComponent(field3) + "&field4=" + encodeURIComponent(field4) +
-      "&field5=" + encodeURIComponent(field5) + "&field6=" + encodeURIComponent(field6) + 
-      "&field7=" + encodeURIComponent(field7));
-  }
 
 };

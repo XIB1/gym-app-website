@@ -37,48 +37,35 @@ table, th, td {
 
   font-size: 10vw;
   font-weight: bold;
-
-
-
-  border: 0.5vw solid black;
-  border-radius: 100%;
-
-  transition: all 250ms;
-  transition-timing-function: ease-in-out;
-}
-
-#circle-button[data-status="box"] {
-  
-  background-color: #333;
-  color: rgba(0, 0, 0, 0);
-
-  height: 90vh;
-  width: 90vw;
-  bottom: 5%;
-  left: 5%;
-
-  position: float;
-
-
-  border-radius: 1vmin 1vmin;
-  border: 0.2vw solid black;
-}
-
-#circle-button[data-status="button"] {
-  color: #000;
+  user-select: none;
 
   bottom: 2vw;
   left: 71vw;
   width: 25vw;
   height: 25vw;
 
-  position: fixed;
-
-
   border: 1vw solid black;
   border-radius: 100%;
+
+  opacity: 1;
+  transition: opacity 0.2s linear;
+  
 }
 
+#circle-button[data-status="hidden"] {
+ 
+  opacity: 0;
+}
+/*
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+*/
 .sesscont {
   float: bottom;
   height: 75px;
