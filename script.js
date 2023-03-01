@@ -1,5 +1,12 @@
-window.onload = function() {
-
+function getDistinctValues(arr, col) {
+  const distinct = new Set();
+  for (const obj of arr) {
+    distinct.add(obj[col]);
+  }
+  return Array.from(distinct);
+};
+function populateEntries() {
+  
   var entries = new Object()
 
   var morning = new Date("Jan 1, 2023 05:00");
@@ -7,18 +14,8 @@ window.onload = function() {
   var evening = new Date("Jan 1, 2023 17:00");
   var night = new Date("Jan 1, 2023 22:00");
 
-  var tableBody = document.getElementById("table-body");
-
   var sessionCont = document.getElementById("session-container")
 
-  function getDistinctValues(arr, col) {
-    const distinct = new Set();
-    for (const obj of arr) {
-      distinct.add(obj[col]);
-    }
-    return Array.from(distinct);
-  };
-  
   // Make a request to the server to retrieve the data from the database
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "get-entries.php", true);
@@ -40,9 +37,6 @@ window.onload = function() {
         var time = new String(entry[0].Time);
         var totWeight = new Number();
 
-
-
-        
         var cont = document.createElement("div");
         cont.classList.add("sesscont");
 
@@ -58,9 +52,6 @@ window.onload = function() {
         if (timestamp >= night || timestamp < morning) {pic = "night.png"};
         img.src = "img/" + pic;
         
-        
-
-
         for (row in entry) {
 
           excer = excer.concat(entry[row].Exercise, ", ");
@@ -96,7 +87,6 @@ window.onload = function() {
         boxCont.appendChild(dateBox);
         boxCont.appendChild(excBox);
 
-
         sessBoxCont.appendChild(img);
         sessBoxCont.appendChild(boxCont);
         sessBoxCont.appendChild(weightBox);
@@ -109,6 +99,11 @@ window.onload = function() {
     };
   };
   xhr.send();
+};
+
+window.onload = function() {
+
+  populateEntries();
 
   document.getElementById("add-entry-form").addEventListener("submit", function(event) {
     event.stopPropagation();
