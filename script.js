@@ -129,11 +129,17 @@ function addEntry(field1, field2, field3, field4, field5, field6, field7) {
     "&field5=" + encodeURIComponent(field5) + "&field6=" + encodeURIComponent(field6) + 
     "&field7=" + encodeURIComponent(field7));
 };
+function showList(event) {
+  e = event || window.event;
+  c = e.target.firstChild;
+  e.target.parentNode.children[1].dataset.status = "show";
+};
 function selectItem(event) {
   e = event || window.event;
   var target = e.target || e.srcElement;
   text = target.textContent || target.innerText;
   document.getElementById(target.classList[0] + "-input").value = text;
+  target.parentNode.dataset.status = "hide";
 };
 
 window.onload = function() {
