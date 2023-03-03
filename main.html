@@ -12,7 +12,16 @@
 
   <div id="form-holder">
     <form id="add-entry-form" style="display: none;">
-      <input type="text" id="field1" placeholder="Field 1"><br>
+      <div class="dropdown">
+        <input class="dropbtn" type="text" id="exc-input" placeholder="Excercise">
+          <div class="dropdown-content">
+            <a class="exc" href="#" onclick="selectItem()">Opt1</a>
+            <a class="exc" href="#" onclick="selectItem()">Opt2</a>
+            <a class="exc" href="#" onclick="selectItem()">Opt3</a>
+          </div>
+        </input><br>
+      </div>
+      
       <input type="text" id="field2" placeholder="Field 2"><br>
       <input type="text" id="field3" placeholder="Field 3"><br>
       <input type="text" id="field4" placeholder="Field 4"><br>
@@ -21,6 +30,11 @@
       <input type="text" id="field7" placeholder="Field 7"><br>
       <button type="submit">Submit</button>
       <button type="button" id="cancel-button">Cancel</button>
+
+      <div class="dropdown">
+
+      </div>
+
     </form>
   </div>
 

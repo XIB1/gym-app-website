@@ -10,3 +10,33 @@ Stack trace:
 #0 C:\repos\gym-app-website\add-entry.php(34): mysqli->query('INSERT INTO lif...')
 #1 {main}
   thrown in C:\repos\gym-app-website\add-entry.php on line 34
+[03-Mar-2023 19:47:05 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect date value: '' for column 'Date' at row 1 in C:\repos\gym-app-website\add-entry.php:33
+Stack trace:
+#0 C:\repos\gym-app-website\add-entry.php(33): mysqli->query('INSERT INTO lif...')
+#1 {main}
+  thrown in C:\repos\gym-app-website\add-entry.php on line 33
+[03-Mar-2023 19:47:09 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect date value: '' for column 'Date' at row 1 in C:\repos\gym-app-website\add-entry.php:33
+Stack trace:
+#0 C:\repos\gym-app-website\add-entry.php(33): mysqli->query('INSERT INTO lif...')
+#1 {main}
+  thrown in C:\repos\gym-app-website\add-entry.php on line 33
+[03-Mar-2023 19:47:11 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect date value: '' for column 'Date' at row 1 in C:\repos\gym-app-website\add-entry.php:33
+Stack trace:
+#0 C:\repos\gym-app-website\add-entry.php(33): mysqli->query('INSERT INTO lif...')
+#1 {main}
+  thrown in C:\repos\gym-app-website\add-entry.php on line 33
+[03-Mar-2023 19:48:22 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect date value: '' for column 'Date' at row 1 in C:\repos\gym-app-website\add-entry.php:33
+Stack trace:
+#0 C:\repos\gym-app-website\add-entry.php(33): mysqli->query('INSERT INTO lif...')
+#1 {main}
+  thrown in C:\repos\gym-app-website\add-entry.php on line 33
+[03-Mar-2023 19:48:24 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect date value: '' for column 'Date' at row 1 in C:\repos\gym-app-website\add-entry.php:33
+Stack trace:
+#0 C:\repos\gym-app-website\add-entry.php(33): mysqli->query('INSERT INTO lif...')
+#1 {main}
+  thrown in C:\repos\gym-app-website\add-entry.php on line 33
+[03-Mar-2023 19:49:18 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect date value: '' for column 'Date' at row 1 in C:\repos\gym-app-website\add-entry.php:33
+Stack trace:
+#0 C:\repos\gym-app-website\add-entry.php(33): mysqli->query('INSERT INTO lif...')
+#1 {main}
+  thrown in C:\repos\gym-app-website\add-entry.php on line 33
