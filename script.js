@@ -180,16 +180,15 @@ window.onload = function() {
   });
 
   window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.dataset.status = "show") {
-          openDropdown.dataset.status = "hide";
-        }
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.dataset.status = "show" && !openDropdown.classList.contains(event.target.id)) {
+        openDropdown.dataset.status = "hide";
       }
     }
+    
   }
 
 };
