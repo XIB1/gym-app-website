@@ -168,7 +168,7 @@ window.onload = function() {
 
     if (button.dataset.status == "button") {
       button.dataset.status = "hidden";
-      document.getElementById("add-entry-form").style.display = "block";
+      document.getElementById("form-holder").dataset.status = "show";
     } 
   });
 
@@ -176,7 +176,7 @@ window.onload = function() {
     event.stopPropagation();
     var button = document.getElementById("circle-button");
     button.dataset.status = "button";
-    document.getElementById("add-entry-form").style.display = "none";
+    document.getElementById("form-holder").dataset.status = "hide";
   });
 
 };

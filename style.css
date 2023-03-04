@@ -10,11 +10,6 @@ table, th, td {
   padding: 5px;
 }
 
-#add-entry-form {
-  padding: 10px;
-  background-color: lightgray;
-  border-radius: 5px;
-}
 
 #session-container {
   position: relative;
@@ -132,21 +127,35 @@ table, th, td {
   font-size: 16px;
 }
 
-/*
-.dropbtn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
+#form-holder[data-status="show"]{
+  top: 50%;
+  animation: slide-up 0.5s ease-in;
 }
-*/
+
+#form-holder{
+  position: fixed;
+  left: 5%;
+  top: 100%;
+  width: 90%;
+  height: 100vh;
+}
+
+@keyframes slide-up {
+  0% {top: 100%;}
+  100% {top: 50%}
+}
+
+#add-entry-form {
+  position: relative;
+  padding: 10px;
+  background-color: lightgray;
+  border-radius: 5px;
+  height: 100%;
+}
 
 .dropbtn {
   width: 100%;
 }
-
-
 .dropdown {
   position: relative;
 }
