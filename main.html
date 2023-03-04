@@ -10,23 +10,34 @@
 <body>
   <div id="session-container"></div>
 
-  <div id="form-holder" data-status="hide">
+  <div id="form-holder" data-status="none">
     <form id="add-entry-form" >
-      <div class="dropdown" onclick="showList()">
+
+      <input type="text" id="field1" placeholder="Date"><br>
+      <input type="text" id="field2" placeholder="Time"><br>
+
+      <div class="dropdown" onclick="showList(event)">
         <input class="dropbtn" readonly="readonly" type="text" id="exc-input" placeholder="Excercise">
         <div class="dropdown-content"  data-status="hide">
-          <a class="exc" href="#" onclick="selectItem()">Opt1</a>
-          <a class="exc" href="#" onclick="selectItem()">Opt2</a>
-          <a class="exc" href="#" onclick="selectItem()">Opt3</a>
+          <a class="exc" href="#" onclick="selectItem(event)">Opt1</a>
+          <a class="exc" href="#" onclick="selectItem(event)">Opt2</a>
+          <a class="exc" href="#" onclick="selectItem(event)">Opt3</a>
         </div>
       </div>
       
-      <input type="text" id="field2" placeholder="Field 2"><br>
-      <input type="text" id="field3" placeholder="Field 3"><br>
-      <input type="text" id="field4" placeholder="Field 4"><br>
-      <input type="text" id="field5" placeholder="Field 5"><br>
-      <input type="text" id="field6" placeholder="Field 6"><br>
-      <input type="text" id="field7" placeholder="Field 7"><br>
+      <input type="text" id="field4" placeholder="Weight"><br>
+      <input type="text" id="field5" placeholder="Sets"><br>
+      <input type="text" id="field6" placeholder="Reps"><br>
+
+      <div class="dropdown" onclick="showList(event)">
+        <input class="dropbtn" readonly="readonly" type="text" id="eff-input" placeholder="Effort">
+        <div class="dropdown-content"  data-status="hide">
+          <a class="eff" href="#" onclick="selectItem(event)">Easy</a>
+          <a class="eff" href="#" onclick="selectItem(event)">Medium</a>
+          <a class="eff" href="#" onclick="selectItem(event)">Hard</a>
+        </div>
+      </div>
+
       <button type="submit">Submit</button>
       <button type="button" id="cancel-button">Cancel</button>
 

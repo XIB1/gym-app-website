@@ -131,10 +131,10 @@ function addEntry(field1, field2, field3, field4, field5, field6, field7) {
 };
 function showList(event) {
   e = event || window.event;
-  c = e.target.firstChild;
   e.target.parentNode.children[1].dataset.status = "show";
 };
 function selectItem(event) {
+  event.stopPropagation();
   e = event || window.event;
   var target = e.target || e.srcElement;
   text = target.textContent || target.innerText;
@@ -178,5 +178,18 @@ window.onload = function() {
     button.dataset.status = "button";
     document.getElementById("form-holder").dataset.status = "hide";
   });
+
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.dataset.status = "show") {
+          openDropdown.dataset.status = "hide";
+        }
+      }
+    }
+  }
 
 };
