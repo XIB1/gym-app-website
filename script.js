@@ -132,6 +132,7 @@ function addEntry(field1, field2, field3, field4, field5, field6, field7) {
 function showList(event) {
   e = event || window.event;
   e.target.parentNode.children[1].dataset.status = "show";
+  setTransparent();
 };
 function selectItem(event) {
   event.stopPropagation();
@@ -140,11 +141,42 @@ function selectItem(event) {
   text = target.textContent || target.innerText;
   document.getElementById(target.classList[0] + "-input").value = text;
   target.parentNode.dataset.status = "hide";
+  setOpaque();
 };
+function setTransparent() {
+  var form = document.getElementById("add-entry-form");
+  var inputs = document.getElementsByClassName("entry-form");
+  form.classList.add("transparent");
+  if (form.classList.contains("opaque")) {
+    form.classList.remove("opaque");
+  };
+  for (i = 0; i < inputs.length; i++) {
+    if (inputs[i].classList.contains("opaque")) {
+      inputs[i].classList.remove("opaque");
+    };
+    inputs[i].classList.add("transparent");
+  }
+};
+function setOpaque() {
+  var form = document.getElementById("add-entry-form");
+  var inputs = document.getElementsByClassName("entry-form");
+  form.classList.add("opaque");
+  if (form.classList.contains("transparent")) {
+    form.classList.remove("transparent");
+  };
+  for (i = 0; i < inputs.length; i++) {
+    if (inputs[i].classList.contains("transparent")) {
+      inputs[i].classList.remove("transparent");
+    };
+    inputs[i].classList.add("opaque");
+  }
+}
 
 window.onload = function() {
 
   populateEntries();
+
+
 
   document.getElementById("add-entry-form").addEventListener("submit", function(event) {
     event.stopPropagation();
@@ -181,13 +213,21 @@ window.onload = function() {
 
   window.onclick = function(event) {
     var dropdowns = document.getElementsByClassName("dropdown-content");
+    var open = false;
     var i;
     for (i = 0; i < dropdowns.length; i++) {
       var openDropdown = dropdowns[i];
-      if (openDropdown.dataset.status = "show" && !openDropdown.classList.contains(event.target.id)) {
+      if (openDropdown.dataset.status == "show" && !openDropdown.classList.contains(event.target.id)) {
         openDropdown.dataset.status = "hide";
-      }
-    }
+      };
+      if (openDropdown.dataset.status == "show") {
+        open = true;
+      };
+    };
+    if (open == false) {
+      setOpaque();
+    };
+    
     
   }
 
