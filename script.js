@@ -170,12 +170,32 @@ function setOpaque() {
     };
     inputs[i].classList.add("opaque");
   }
-}
+};
+function addDropdowns() {
+  var el = document.getElementsByClassName("dropdown-content numeric");
+
+  for (i = 0; i < el.length; i++) {
+    var range = el[i].dataset.range.split(",");
+
+    for (j = parseInt(range[0]) - 1; j < parseInt(range[1]); j += parseInt(range[2])) {
+      var opt = document.createElement("a");
+      opt.innerHTML = parseInt(j) + 1;
+
+      tag = el[i].classList[2].split("-")[0]
+
+      opt.classList.add(tag);
+      opt.href = "#";
+      opt.setAttribute("onclick", "selectItem(event)");
+      el[i].appendChild(opt);
+    };
+  };
+};
 
 window.onload = function() {
 
   populateEntries();
 
+  addDropdowns();
 
 
   document.getElementById("add-entry-form").addEventListener("submit", function(event) {

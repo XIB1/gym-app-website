@@ -25,38 +25,19 @@
         </div>
       </div>
       
-      <input type="text" id="field4" placeholder="Weight">
-      <input type="text" id="field5" placeholder="Sets">
+      <div class="dropdown" onclick="showList(event)">
+        <input class="dropbtn" readonly="readonly" type="text" id="wei-input" placeholder="Weight">
+        <div class="dropdown-content numeric wei-input" data-range="5,200,5" data-status="hide"></div>
+      </div>
+
+      <div class="dropdown" onclick="showList(event)">
+        <input class="dropbtn" readonly="readonly" type="text" id="set-input" placeholder="Sets">
+        <div class="dropdown-content numeric set-input" data-range="1,10,1" data-status="hide"></div>
+      </div>
 
       <div class="dropdown" onclick="showList(event)">
         <input class="dropbtn" readonly="readonly" type="text" id="rep-input" placeholder="Reps">
-        <div class="dropdown-content rep-input" data-status="hide">
-          <a class="rep" href="#" onclick="selectItem(event)">1</a>
-          <a class="rep" href="#" onclick="selectItem(event)">2</a>
-          <a class="rep" href="#" onclick="selectItem(event)">3</a>
-          <a class="rep" href="#" onclick="selectItem(event)">4</a>
-          <a class="rep" href="#" onclick="selectItem(event)">5</a>
-          <a class="rep" href="#" onclick="selectItem(event)">6</a>
-          <a class="rep" href="#" onclick="selectItem(event)">7</a>
-          <a class="rep" href="#" onclick="selectItem(event)">8</a>
-          <a class="rep" href="#" onclick="selectItem(event)">9</a>
-          <a class="rep" href="#" onclick="selectItem(event)">10</a>
-          <a class="rep" href="#" onclick="selectItem(event)">11</a>
-          <a class="rep" href="#" onclick="selectItem(event)">12</a>
-          <a class="rep" href="#" onclick="selectItem(event)">13</a>
-          <a class="rep" href="#" onclick="selectItem(event)">14</a>
-          <a class="rep" href="#" onclick="selectItem(event)">15</a>
-          <a class="rep" href="#" onclick="selectItem(event)">16</a>
-          <a class="rep" href="#" onclick="selectItem(event)">17</a>
-          <a class="rep" href="#" onclick="selectItem(event)">18</a>
-          <a class="rep" href="#" onclick="selectItem(event)">19</a>
-          <a class="rep" href="#" onclick="selectItem(event)">20</a>
-          <a class="rep" href="#" onclick="selectItem(event)">21</a>
-          <a class="rep" href="#" onclick="selectItem(event)">22</a>
-          <a class="rep" href="#" onclick="selectItem(event)">23</a>
-          <a class="rep" href="#" onclick="selectItem(event)">24</a>
-          <a class="rep" href="#" onclick="selectItem(event)">25</a>
-        </div>
+        <div class="dropdown-content numeric rep-input" data-range="1,25,1" data-status="hide"></div>
       </div>
 
       <div class="dropdown" onclick="showList(event)">
