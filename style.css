@@ -164,10 +164,10 @@ table, th, td {
   height: 100%;
 }
 .opaque {
-  background-color: rgb(211, 211, 211, 1);
+  background-color: rgb(50, 50, 50, 1);
 }
 .transparent {
-  background-color: rgb(211, 211, 211, 0.5);
+  background-color: rgb(50, 50, 50, 0.75);
 }
 .dropbtn {
   width: 100%;
@@ -178,12 +178,12 @@ table, th, td {
   position: relative;
 }
 .dropdown-content{
-  overflow-y: auto;
-
+  overflow-y: scroll;
   position: fixed;
   top: 5%;
   left: 5%;
   width: 90%;
+  max-height: 90%;
 
   opacity: 100%;
   background-color: #f1f1f1;

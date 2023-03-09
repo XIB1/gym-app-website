@@ -177,9 +177,9 @@ function addDropdowns() {
   for (i = 0; i < el.length; i++) {
     var range = el[i].dataset.range.split(",");
 
-    for (j = parseInt(range[0]) - 1; j < parseInt(range[1]); j += parseInt(range[2])) {
+    for (j = 0; j < parseInt(range[1]) / parseFloat(range[2]); j += 1) {
       var opt = document.createElement("a");
-      opt.innerHTML = parseInt(j) + 1;
+      opt.innerHTML = (j + 1) * parseFloat(range[2]);
 
       tag = el[i].classList[2].split("-")[0]
 
@@ -197,18 +197,34 @@ window.onload = function() {
 
   addDropdowns();
 
+  var td = new Date();
+  var h = td.getHours();
+  var min = ('0' + td.getMinutes()).slice(-2);
+
+  var effDict = {
+    "Easy": "E",
+    "Medium": "M",
+    "Hard": "H"
+  };
+
+  document.getElementById("dat-input").valueAsDate = td;
+  document.getElementById("tim-input").value = h + ":" + min;
+
 
   document.getElementById("add-entry-form").addEventListener("submit", function(event) {
     event.stopPropagation();
     event.preventDefault();
-    var field1 = document.getElementById("field1").value;
-    var field2 = document.getElementById("field2").value;
-    var field3 = document.getElementById("field3").value;
-    var field4 = document.getElementById("field4").value;
-    var field5 = document.getElementById("field5").value;
-    var field6 = document.getElementById("field6").value;
-    var field7 = document.getElementById("field7").value;
-    addEntry(field1, field2, field3, field4, field5, field6, field7);
+    var date = document.getElementById("dat-input").value;
+    var time = document.getElementById("tim-input").value;
+    var exce = document.getElementById("exc-input").value;
+    var weig = document.getElementById("wei-input").value;
+    var sets = document.getElementById("set-input").value;
+    var reps = document.getElementById("rep-input").value;
+    var effo = document.getElementById("eff-input").value;
+
+    effo = effDict[effo]
+
+    addEntry(date, time, exce, weig, sets, reps, effo);
 
     var button = document.getElementById("circle-button");
     button.dataset.status = "button";
@@ -221,7 +237,7 @@ window.onload = function() {
     if (button.dataset.status == "button") {
       button.dataset.status = "hidden";
       document.getElementById("form-holder").dataset.status = "show";
-    } 
+    };
   });
 
   document.getElementById("cancel-button").addEventListener("click", function(event) {

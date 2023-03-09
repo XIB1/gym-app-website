@@ -13,8 +13,8 @@
   <div id="form-holder" data-status="none">
     <form id="add-entry-form" class="entry-form opaque" >
 
-      <input type="text" id="field1" placeholder="Date">
-      <input type="text" id="field2" placeholder="Time">
+      <input type="date" class="dropbtn" id="dat-input" placeholder="Date">
+      <input type="time" class="dropbtn" id="tim-input" placeholder="Time">
 
       <div class="dropdown" onclick="showList(event)">
         <input class="dropbtn" readonly="readonly" type="text" id="exc-input" placeholder="Excercise">
@@ -51,10 +51,6 @@
 
       <button type="submit">Submit</button>
       <button type="button" id="cancel-button">Cancel</button>
-
-      <div class="dropdown">
-
-      </div>
 
     </form>
   </div>

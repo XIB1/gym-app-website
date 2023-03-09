@@ -40,3 +40,13 @@ Stack trace:
 #0 C:\repos\gym-app-website\add-entry.php(33): mysqli->query('INSERT INTO lif...')
 #1 {main}
   thrown in C:\repos\gym-app-website\add-entry.php on line 33
+[05-Mar-2023 14:07:08 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Data too long for column 'Effort' at row 1 in C:\repos\gym-app-website\add-entry.php:33
+Stack trace:
+#0 C:\repos\gym-app-website\add-entry.php(33): mysqli->query('INSERT INTO lif...')
+#1 {main}
+  thrown in C:\repos\gym-app-website\add-entry.php on line 33
+[05-Mar-2023 14:10:14 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Data too long for column 'Effort' at row 1 in C:\repos\gym-app-website\add-entry.php:33
+Stack trace:
+#0 C:\repos\gym-app-website\add-entry.php(33): mysqli->query('INSERT INTO lif...')
+#1 {main}
+  thrown in C:\repos\gym-app-website\add-entry.php on line 33
