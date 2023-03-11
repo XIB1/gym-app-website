@@ -240,7 +240,6 @@ window.onload = function() {
     "Hard": "H"
   };
 
-
   document.getElementById("add-entry-form").addEventListener("submit", function(event) {
     event.stopPropagation();
     event.preventDefault();
@@ -260,7 +259,6 @@ window.onload = function() {
     button.dataset.status = "button";
 
   });
-
 
   document.getElementById("circle-button").addEventListener("click", function() {
     var button = document.getElementById("circle-button");
