@@ -13,7 +13,21 @@ if (!$conn) {
 }
 
 // Execute the query to retrieve the entries from the database
-$result = mysqli_query($conn, "SELECT Date, Time, Exercise, Weight, Sets, Reps, Effort FROM lifts");
+//$result = mysqli_query($conn, "SELECT Date, Time, Exercise, Weight, Sets, Reps, Effort FROM lifts");
+$result = mysqli_query($conn, "
+select 
+    date,
+    time,
+    exercise,
+    weight,
+    sets,
+    reps,
+    effort
+from
+    lifts l
+left join
+    exercise e on l.exeid = e.exeid
+");
 
 // Check the result
 if (!$result) {

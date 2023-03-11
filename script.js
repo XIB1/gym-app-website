@@ -31,18 +31,15 @@ function populateEntries() {
       // Parse the response from the server as JSON
       entries = JSON.parse(xhr.responseText);
 
-      //console.log(getDistinctValues(entries, "Date"));
-      //console.log(getDistinctValues(entries, "Date").sort().reverse());
-
-      const dates = getDistinctValues(entries, "Date").sort().reverse();
+      const dates = getDistinctValues(entries, "date").sort().reverse();
 
       for (const date in dates) {
 
-        var entry = entries.filter(item => item.Date == dates[date]);
+        var entry = entries.filter(item => item.date == dates[date]);
 
         var exeArray = [];
         var exer = new String();
-        var time = new String(entry[0].Time);
+        var time = new String(entry[0].time);
         var totWeight = new Number();
 
         var cont = document.createElement("div");
@@ -58,18 +55,19 @@ function populateEntries() {
         if (timestamp >= day && timestamp < evening) {pic = "day.png"};
         if (timestamp >= evening && timestamp < night) {pic = "evening.png"};
         if (timestamp >= night || timestamp < morning) {pic = "night.png"};
+
         img.src = "img/" + pic;
         
         for (row in entry) {
           
-          if (!exeArray.includes(entry[row].Exercise)) {
-            exeArray.push(entry[row].Exercise);
+          if (!exeArray.includes(entry[row].exercise)) {
+            exeArray.push(entry[row].exercise);
           };
           
-          if (time > entry[row].Time) {
-            time = entry[row].Time;
+          if (time > entry[row].time) {
+            time = entry[row].time;
           };
-          totWeight = totWeight + entry[row].Sets * entry[row].Reps * entry[row].Weight;
+          totWeight = totWeight + entry[row].sets * entry[row].reps * entry[row].weight;
         };
 
         exer = exeArray.join(", ");
@@ -110,6 +108,7 @@ function populateEntries() {
       };
     };
   };
+
   xhr.send();
 };
 function addEntry(field1, field2, field3, field4, field5, field6, field7) {
@@ -195,6 +194,9 @@ function addDropdowns() {
       el[i].appendChild(opt);
     };
   };
+
+
+
 };
 
 window.onload = function() {
