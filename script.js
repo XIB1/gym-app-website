@@ -13,14 +13,15 @@ function removeElementsByClass(className){
 }
 function populateEntries() {
   
-  var entries = new Object()
+  var entries = new Object();
+  
 
   var morning = new Date("Jan 1, 2023 05:00");
   var day = new Date("Jan 1, 2023 10:00");
   var evening = new Date("Jan 1, 2023 17:00");
   var night = new Date("Jan 1, 2023 22:00");
 
-  var sessionCont = document.getElementById("session-container")
+  var sessionCont = document.getElementById("session-container");
 
   // Make a request to the server to retrieve the data from the database
   var xhr = new XMLHttpRequest();
@@ -39,7 +40,8 @@ function populateEntries() {
 
         var entry = entries.filter(item => item.Date == dates[date]);
 
-        var excer = new String();
+        var exeArray = [];
+        var exer = new String();
         var time = new String(entry[0].Time);
         var totWeight = new Number();
 
@@ -59,15 +61,19 @@ function populateEntries() {
         img.src = "img/" + pic;
         
         for (row in entry) {
-
-          excer = excer.concat(entry[row].Exercise, ", ");
+          
+          if (!exeArray.includes(entry[row].Exercise)) {
+            exeArray.push(entry[row].Exercise);
+          };
+          
           if (time > entry[row].Time) {
             time = entry[row].Time;
           };
           totWeight = totWeight + entry[row].Sets * entry[row].Reps * entry[row].Weight;
         };
 
-        excer = excer.slice(0, -2);
+        exer = exeArray.join(", ");
+        
         dat = new Date(dates[date]);
         dat = dat.toString();
         dat = parseInt(dat.slice(8, 10)) + " " + dat.slice(4, 7) + " " + dat.slice(11, 15);
@@ -78,7 +84,7 @@ function populateEntries() {
 
         var excBox = document.createElement("div");
         excBox.classList.add(...["exc-box", "sess-info"]);
-        excBox.innerHTML = excer;
+        excBox.innerHTML = exer;
 
         var weightBox = document.createElement("div");
         weightBox.classList.add("weight-box");
