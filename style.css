@@ -127,6 +127,55 @@ table, th, td {
   font-size: 16px;
 }
 
+
+
+
+#selected-session {
+  background-color: #222;
+  z-index: 5;
+  position: fixed;
+  bottom: 120vh;
+  left: 5vw;
+  height: 100vh;
+  width: 90vw;
+}
+
+#selected-session[data-status="show"] {
+  transform: rotate(0deg);
+  bottom: 30vh;
+  animation: slide-down-2 0.35s;
+  transition-timing-function: cubic-bezier(1, 0.01, 0.95, 0.85);
+}
+
+#selected-session[data-status="hide"] {
+  bottom: 120vh;
+  animation: slide-up-2 0.35s;
+  transition-timing-function: cubic-bezier(0.32, 0.84, 0.09, 1);
+}
+
+@keyframes slide-up-2 {
+  0% {bottom: 30vh;}
+  100% {bottom: 120vh;}
+}
+@keyframes slide-down-2 {
+  0% {bottom: 120vh;}
+  100% {bottom: 30vh;}
+}
+
+#selected-display {
+  position: relative;
+  height: 90%;
+
+  background-color: #112933;
+}
+
+#selected-buttons {
+  position: relative;
+  height: 10%;
+
+  background-color: #3e8e41;
+}
+
 #form-holder {
   position: fixed;
   left: 5%;
@@ -143,6 +192,7 @@ table, th, td {
 } 
 
 #form-holder[data-status="hide"]{
+  z-index: 99;
   top: 120%;
   animation: slide-down 0.35s;
   transition-timing-function: cubic-bezier(1, 0.01, 0.95, 0.85);
@@ -158,6 +208,7 @@ table, th, td {
 }
 
 #add-entry-form {
+  z-index: 6;
   position: relative;
   padding: 10px;
   border-radius: 5px;

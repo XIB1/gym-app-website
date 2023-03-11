@@ -94,6 +94,8 @@ function populateEntries() {
         var sessBoxCont = document.createElement("div");
         sessBoxCont.classList.add("sessboxcont");
 
+        sessBoxCont.setAttribute("onclick", "showSession()");
+
         boxCont.appendChild(dateBox);
         boxCont.appendChild(excBox);
 
@@ -218,6 +220,9 @@ function addDropdowns() {
   xhr.send();
 
 };
+function showSession() {
+  document.getElementById("selected-session").dataset.status = "show";
+};
 
 
 window.onload = function() {
@@ -260,6 +265,7 @@ window.onload = function() {
 
   });
 
+
   document.getElementById("circle-button").addEventListener("click", function() {
     var button = document.getElementById("circle-button");
 
@@ -293,7 +299,6 @@ window.onload = function() {
       setOpaque();
     };
     
-    
-  }
+  };
 
 };
