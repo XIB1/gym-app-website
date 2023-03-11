@@ -119,11 +119,9 @@ function addEntry(field1, field2, field3, field4, field5, field6, field7) {
   xhr.onreadystatechange = function() {
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
 
-      document.getElementById("add-entry-form").style.display = "none";
-
       var button = document.getElementById("circle-button");
       button.dataset.status = "button";
-      document.getElementById("add-entry-form").style.display = "none";
+      document.getElementById("form-holder").dataset.status = "hide";
 
       removeElementsByClass("sesscont");
       populateEntries();
@@ -181,13 +179,11 @@ function addDropdowns() {
 
   for (i = 0; i < el.length; i++) {
     var range = el[i].dataset.range.split(",");
+    tag = el[i].classList[2].split("-")[0];
 
     for (j = 0; j < parseInt(range[1]) / parseFloat(range[2]); j += 1) {
       var opt = document.createElement("a");
       opt.innerHTML = (j + 1) * parseFloat(range[2]);
-
-      tag = el[i].classList[2].split("-")[0]
-
       opt.classList.add(tag);
       opt.href = "#";
       opt.setAttribute("onclick", "selectItem(event)");
@@ -197,7 +193,32 @@ function addDropdowns() {
 
 
 
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "get-exercise.php", true);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+      var result = JSON.parse(xhr.responseText);
+
+      var el = document.getElementsByClassName("dropdown-content exc-input");
+      
+      tag = el[0].classList[1].split("-")[0];
+
+      for (j = 0; j < result.length; j++) {
+        var opt = document.createElement("a");
+        opt.innerHTML = result[j].exercise;
+        opt.classList.add(tag);
+        opt.href = "#";
+        opt.setAttribute("onclick", "selectItem(event)");
+        el[0].appendChild(opt);
+      };
+      
+
+    };
+  };
+  xhr.send();
+
 };
+
 
 window.onload = function() {
 
