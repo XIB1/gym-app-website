@@ -258,9 +258,6 @@ function showSession(event) {
 
         };
         
-
-
-  
       };
     };
     xhr.send();
