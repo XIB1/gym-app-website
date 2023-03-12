@@ -139,7 +139,7 @@ table, th, td {
 
 
 #selected-session {
-  background-color: #222;
+  background-color: #181818;
   z-index: 5;
   position: fixed;
   bottom: 120vh;
@@ -176,7 +176,6 @@ table, th, td {
   overflow-x: hidden;
   height: 90%;
 
-  background-color: #222;
 }
 #selected-display::-webkit-scrollbar {
   display: none;
@@ -191,17 +190,19 @@ body::-webkit-scrollbar {
   display: flex;
   flex-direction: row;
   margin: 15px;
+  background-color: #272727;
 }
 .session-row.header {
   height: 16px;
   padding-top: 10px;
   margin-bottom: 5px;
+  
+  background-color: #181818;
 }
 
 .session-attribute {
   display: flex;
   color: #ddd;
-  background-color: #333;
   align-items:center;
   justify-content:center;
 }
@@ -211,7 +212,12 @@ body::-webkit-scrollbar {
 .session-attribute.sets{width: 10%;}
 .session-attribute.reps{width: 10%;}
 .session-attribute.effort{width: 10%;}
-.session-attribute.delbutton{width: 12%;}
+.session-attribute.delbutton{width: 12%; cursor: pointer;}
+
+.fa-solid {
+  font-size: 25px;
+  color: #633e3e
+};
 
 .session-attribute.head {
   background-color: #222;

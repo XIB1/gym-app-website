@@ -246,21 +246,26 @@ function showSession(event) {
           exe.classList.add("currentsess");
 
           for (att in result[row]) {
-            var attribute = document.createElement("div");
-            attribute.classList.add("session-attribute");
-            attribute.classList.add("currentsess");
-            attribute.classList.add(att);
-            attribute.innerHTML = result[row][att];
-            exe.appendChild(attribute);
+            if (att != "id_lift") {
+              var attribute = document.createElement("div");
+              attribute.classList.add("session-attribute");
+              attribute.classList.add("currentsess");
+              attribute.classList.add(att);
+              attribute.innerHTML = result[row][att];
+              exe.appendChild(attribute);
+            } else {
+              var delbutton = document.createElement("div");
+              delbutton.classList.add("session-attribute");
+              delbutton.classList.add("currentsess");
+              delbutton.classList.add("delbutton");
+              delbutton.dataset.id = result[row][att]
+              var delicon = document.createElement("i");
+              delicon.classList.add("fa-solid");
+              delicon.classList.add("fa-xmark");
+              delbutton.appendChild(delicon);
+              exe.appendChild(delbutton);
+            };
           };
-
-          var delbutton = document.createElement("div");
-          delbutton.classList.add("session-attribute");
-          delbutton.classList.add("currentsess");
-          delbutton.classList.add("delbutton");
-          exe.appendChild(delbutton);
-
-          
 
           session.querySelector("#selected-display").appendChild(exe);
 

@@ -23,7 +23,8 @@ select
     weight,
     sets,
     reps,
-    effort
+    effort,
+    id_lift
 from
     lifts l
 left join
