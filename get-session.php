@@ -18,7 +18,7 @@ if (!$conn) {
 //$result = mysqli_query($conn, "SELECT Date, Time, Exercise, Weight, Sets, Reps, Effort FROM lifts");
 $result = mysqli_query($conn, "
 select 
-    substr(time, 1,5),
+    substr(time, 1,5) as time,
     exercise,
     weight,
     sets,
@@ -30,6 +30,8 @@ left join
     exercise e on l.exeid = e.exeid
 where
     date = '" . $date . "'
+order by 
+    time desc
 ");
 
 // Check the result

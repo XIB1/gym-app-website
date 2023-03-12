@@ -118,7 +118,7 @@ function addEntry(field1, field2, field3, field4, field5, field6, field7) {
   
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "add-entry.php", true);
-  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.onreadystatechange = function() {
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
 
@@ -222,8 +222,13 @@ function addDropdowns() {
 
 };
 function showSession(event) {
-  var form = document.getElementById("form-holder");
+  var form = document.getElementById("selected-session");
+
+
   if (!(form.dataset.status == "show")){
+
+    removeElementsByClass("currentsess");
+
     var session = document.getElementById("selected-session");
     session.dataset.status = "show";
 
@@ -235,14 +240,16 @@ function showSession(event) {
       if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
         var result = JSON.parse(xhr.responseText);
 
-
         for (row in result) {
           var exe = document.createElement("div");
           exe.classList.add("session-row");
+          exe.classList.add("currentsess");
 
           for (att in result[row]) {
             var attribute = document.createElement("div");
             attribute.classList.add("session-attribute");
+            attribute.classList.add("currentsess");
+            attribute.classList.add(att);
             attribute.innerHTML = result[row][att];
             exe.appendChild(attribute);
           };

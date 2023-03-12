@@ -166,24 +166,39 @@ table, th, td {
 #selected-display {
   position: relative;
   overflow-y: scroll;
+  overflow-x: hidden;
   height: 90%;
 
   background-color: #112933;
 }
+#selected-display::-webkit-scrollbar {
+  display: none;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
 
 .session-row {
   position: relative;
-  width: 100%;
-  padding-left: 2%;
-  height: 10vh;
+  height: 60px;
   display: flex;
   flex-direction: row;
+  margin: 15px;
 }
 
 .session-attribute {
-  flex: 1;
+  display: flex;
   color: #ddd;
+  background-color: #666;
+  align-items:center;
+  justify-content:center;
 }
+.session-attribute.time{width: 16%;}
+.session-attribute.exercise{width: 36%; justify-content: left; padding-left: 15px;}
+.session-attribute.weight{width: 12%;}
+.session-attribute.sets{width: 12%;}
+.session-attribute.reps{width: 12%;}
+.session-attribute.effort{width: 12%;}
 
 #selected-buttons {
   position: relative;
