@@ -93,8 +93,9 @@ function populateEntries() {
 
         var sessBoxCont = document.createElement("div");
         sessBoxCont.classList.add("sessboxcont");
+        sessBoxCont.dataset.date = dates[date];
 
-        sessBoxCont.setAttribute("onclick", "showSession()");
+        sessBoxCont.setAttribute("onclick", "showSession(event)");
 
         boxCont.appendChild(dateBox);
         boxCont.appendChild(excBox);
@@ -220,10 +221,43 @@ function addDropdowns() {
   xhr.send();
 
 };
-function showSession() {
+function showSession(event) {
   var form = document.getElementById("form-holder");
   if (!(form.dataset.status == "show")){
-    document.getElementById("selected-session").dataset.status = "show";
+    var session = document.getElementById("selected-session");
+    session.dataset.status = "show";
+
+    var dat = event.currentTarget.dataset.date;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "get-session.php?date=" + dat, true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+        var result = JSON.parse(xhr.responseText);
+
+
+        for (row in result) {
+          var exe = document.createElement("div");
+          exe.classList.add("session-row");
+
+          for (att in result[row]) {
+            var attribute = document.createElement("div");
+            attribute.classList.add("session-attribute");
+            attribute.innerHTML = result[row][att];
+            exe.appendChild(attribute);
+          };
+
+          session.querySelector("#selected-display").appendChild(exe);
+
+        };
+        
+
+
+  
+      };
+    };
+    xhr.send();
+
   };
 };
 
