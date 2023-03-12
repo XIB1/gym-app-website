@@ -45,6 +45,7 @@ table, th, td {
   opacity: 1;
   transition: opacity 0.2s linear;
   
+  cursor: pointer;
 }
 
 #circle-button[data-status="hidden"] {
@@ -67,6 +68,12 @@ table, th, td {
   border-radius: 25px;
 
   background-color: #112933;
+  transition: background-color 0.2s linear;
+
+  cursor: pointer;
+}
+.sessboxcont:hover {
+  background-color: #1c4353;
 }
 
 .daytime-img {
@@ -169,7 +176,7 @@ table, th, td {
   overflow-x: hidden;
   height: 90%;
 
-  background-color: #112933;
+  background-color: #222;
 }
 #selected-display::-webkit-scrollbar {
   display: none;
@@ -185,20 +192,30 @@ body::-webkit-scrollbar {
   flex-direction: row;
   margin: 15px;
 }
+.session-row.header {
+  height: 16px;
+  padding-top: 10px;
+  margin-bottom: 5px;
+}
 
 .session-attribute {
   display: flex;
   color: #ddd;
-  background-color: #666;
+  background-color: #333;
   align-items:center;
   justify-content:center;
 }
-.session-attribute.time{width: 16%;}
-.session-attribute.exercise{width: 36%; justify-content: left; padding-left: 15px;}
-.session-attribute.weight{width: 12%;}
-.session-attribute.sets{width: 12%;}
-.session-attribute.reps{width: 12%;}
-.session-attribute.effort{width: 12%;}
+.session-attribute.time{width: 14%;}
+.session-attribute.exercise{width: 34%; justify-content: left; padding-left: 15px;}
+.session-attribute.weight{width: 10%;}
+.session-attribute.sets{width: 10%;}
+.session-attribute.reps{width: 10%;}
+.session-attribute.effort{width: 10%;}
+.session-attribute.delbutton{width: 12%;}
+
+.session-attribute.head {
+  background-color: #222;
+}
 
 #selected-buttons {
   position: relative;

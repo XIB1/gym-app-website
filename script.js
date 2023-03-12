@@ -254,6 +254,14 @@ function showSession(event) {
             exe.appendChild(attribute);
           };
 
+          var delbutton = document.createElement("div");
+          delbutton.classList.add("session-attribute");
+          delbutton.classList.add("currentsess");
+          delbutton.classList.add("delbutton");
+          exe.appendChild(delbutton);
+
+          
+
           session.querySelector("#selected-display").appendChild(exe);
 
         };
