@@ -118,7 +118,7 @@ function addEntry(field1, field2, field3, field4, field5, field6, field7) {
   
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "add-entry.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.onreadystatechange = function() {
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
 
@@ -269,6 +269,7 @@ function showSession(event) {
               delicon.classList.add("fa-solid");
               delicon.classList.add("fa-xmark");
               delbutton.appendChild(delicon);
+              delbutton.addEventListener("click", deleteEntry, false);
               exe.appendChild(delbutton);
             };
           };
@@ -281,6 +282,26 @@ function showSession(event) {
     };
     xhr.send();
 
+  };
+};
+function deleteEntry(event) {
+  event.stopPropagation();
+  if (window.confirm("Are you sure you want to delete this entry?")) {
+    var button = event.currentTarget;
+    var childen = button.parentNode.parentNode.children.length;
+    var id = button.dataset.id;
+    button.parentNode.remove();
+    if (childen == 1) {
+      document.getElementById("selected-session").dataset.status = "hide";
+    };
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "delete-entry.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("id=" + encodeURIComponent(id));
+    
+    removeElementsByClass("sesscont");
+    populateEntries();
   };
 };
 

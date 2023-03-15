@@ -5,6 +5,7 @@ html,body{
   background: rgb(0,7,36);
   background: linear-gradient(0deg, #00000B 0%, #30303B 85%, #40404B 100%);
   font-family: 'Trebuchet MS', sans-serif;
+  min-height: 100vh;
 }
 table, th, td {
   border: 1px solid black;
@@ -30,10 +31,11 @@ table, th, td {
   justify-content: center;
   align-items: center;
 
-  color: #000;
+  color: #bbb;
+  background-color: rgb(221, 221, 221, 0.2);
 
   font-size: 10vw;
-  font-weight: bold;
+  font-weight: 400;
   user-select: none;
 
   bottom: 2vw;
@@ -41,17 +43,20 @@ table, th, td {
   width: 25vw;
   height: 25vw;
 
-  border: 1vw solid black;
+  border: 1vw solid #bbb;
   border-radius: 100%;
 
-  opacity: 1;
-  transition: opacity 0.2s linear;
+  opacity: 0.8;
+  transition: opacity 0.2s linear, background-color 0.2s ease;
   
   cursor: pointer;
 }
 
 #circle-button[data-status="hidden"] {
   opacity: 0;
+}
+#circle-button:hover {
+  background-color: rgb(221, 221, 221, 0.4);
 }
 
 .sesscont {
@@ -198,7 +203,7 @@ body::-webkit-scrollbar {
   padding-top: 10px;
   margin-bottom: 5px;
   font-size: 12px;
-  background-color: #181820;;
+  background-color: #181820;
 }
 
 .session-attribute {
@@ -285,16 +290,25 @@ body::-webkit-scrollbar {
   height: 100%;
 }
 .opaque {
-  background-color: rgb(50, 50, 50, 1);
+  background-color: rgb(24, 24, 32, 1);
 }
 .transparent {
-  background-color: rgb(50, 50, 50, 0.75);
+  background-color: rgb(24, 24, 32, 0.75);
 }
-.dropbtn {
-  width: 100%;
-  background-color: rgb(255, 255, 255);
-  border: none;
+
+.form-input {
+  position: relative;
+  height: 30px;
+  width: 90%;
+  display: flex;
+  margin: 10px;
+  background-color: #272729;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 16px;
+  color: #ccc;
+  padding-left: 10px;
 }
+
 .dropdown {
   position: relative;
 }
