@@ -251,7 +251,13 @@ function showSession(event) {
               attribute.classList.add("session-attribute");
               attribute.classList.add("currentsess");
               attribute.classList.add(att);
-              attribute.innerHTML = result[row][att];
+              if (att == "weight") {
+                attribute.innerHTML = result[row][att] + " kg";
+              } else if (att == "sets" || att == "reps") {
+                attribute.innerHTML = result[row][att] + "x";
+              } else {
+                attribute.innerHTML = result[row][att]
+              };
               exe.appendChild(attribute);
             } else {
               var delbutton = document.createElement("div");

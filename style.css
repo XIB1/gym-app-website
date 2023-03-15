@@ -2,7 +2,9 @@
 
 html,body{
   overflow-x: hidden;
-  background-color: #222;
+  background: rgb(0,7,36);
+  background: linear-gradient(0deg, #00000B 0%, #30303B 85%, #40404B 100%);
+  font-family: 'Trebuchet MS', sans-serif;
 }
 table, th, td {
   border: 1px solid black;
@@ -58,22 +60,23 @@ table, th, td {
   width: 100%;
   padding-bottom: 7px;
   padding-top: 7px;
-
+  user-select: none;
+  
 }
 
 .sessboxcont {
   height: 100%;
-  
+  box-shadow: 2px 2px 5px #111;
   border: 2px solid black;
   border-radius: 25px;
-
-  background-color: #112933;
-  transition: background-color 0.2s linear;
+  background: rgb(101,101,101);
+  background: linear-gradient(0deg, rgba(18,25,47,1) 0%, rgba(40,44,59,1) 50%, rgba(18,25,47,1) 100%);
+  transition: opacity 0.15s linear;
 
   cursor: pointer;
 }
 .sessboxcont:hover {
-  background-color: #1c4353;
+  opacity: 0.75;
 }
 
 .daytime-img {
@@ -109,7 +112,7 @@ table, th, td {
 
 .date-box {
   height: 35%;
-
+  padding-top: 2px;
   font-size: 20px;
 }
 
@@ -139,7 +142,7 @@ table, th, td {
 
 
 #selected-session {
-  background-color: #181818;
+  background-color: #181820;
   z-index: 5;
   position: fixed;
   bottom: 120vh;
@@ -190,29 +193,30 @@ body::-webkit-scrollbar {
   display: flex;
   flex-direction: row;
   margin: 15px;
-  background-color: #272727;
+  background-color: #272729;
 }
 .session-row.header {
   height: 16px;
   padding-top: 10px;
   margin-bottom: 5px;
-  
-  background-color: #181818;
+  font-size: 12px;
+  background-color: #181820;;
 }
 
 .session-attribute {
   display: flex;
-  color: #ddd;
+  color: #ccc;
   align-items:center;
   justify-content:center;
 }
 .session-attribute.time{width: 14%;}
 .session-attribute.exercise{width: 34%; justify-content: left; padding-left: 15px;}
-.session-attribute.weight{width: 10%;}
-.session-attribute.sets{width: 10%;}
-.session-attribute.reps{width: 10%;}
-.session-attribute.effort{width: 10%;}
+.session-attribute.weight{width: 16%;}
+.session-attribute.sets{width: 8%;}
+.session-attribute.reps{width: 8%;}
+.session-attribute.effort{width: 8%;}
 .session-attribute.delbutton{width: 12%; cursor: pointer;}
+.session-attribute.delbutton:hover{background-color: #303032;}
 
 .fa-solid {
   font-size: 25px;
@@ -226,8 +230,22 @@ body::-webkit-scrollbar {
 #selected-buttons {
   position: relative;
   height: 10%;
-
-  background-color: #3e8e41;
+  background-color: #333335;
+}
+#close-selected {
+  position: relative;
+  float: right;
+  width: 30%;
+  height: 100%;
+  border: none;
+  color: #ccc;
+  font-size: 16px;
+  font-weight: 400;
+  background-color: #333335;
+  transition: background-color 0.15s ease;
+}
+#close-selected:hover {
+  background-color: #3b3b3d;
 }
 
 #form-holder {
@@ -313,13 +331,3 @@ body::-webkit-scrollbar {
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
-.button {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-}
