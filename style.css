@@ -73,6 +73,7 @@ table, th, td {
   background: linear-gradient(0deg, rgba(18,25,47,1) 0%, rgba(40,44,59,1) 50%, rgba(18,25,47,1) 100%);
   transition: opacity 0.15s linear;
 
+  color: #aaa;
   cursor: pointer;
 }
 .sessboxcont:hover {
@@ -106,8 +107,6 @@ table, th, td {
   
   width: 100%;
   padding-left: 15px;
-
-  color: #999;
 }
 
 .date-box {
@@ -134,7 +133,6 @@ table, th, td {
   padding-left: 20px;
   margin-right: 20px;
 
-  color: #999;
   font-size: 16px;
 }
 
