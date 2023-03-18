@@ -362,21 +362,16 @@ window.onload = function() {
     var effo = document.getElementById("eff-input").value;
 
     effo = effDict[effo];
-
-    var arr = [date, time, exer, weig, sets, reps, effo];
     
-    var hasNull = arr.some(el => !el);
+    var hasNull = [date, time, exer, weig, sets, reps, effo].some(el => !el);
 
     if (hasNull) {
       window.alert("Please fill all fields");
     } else {
       addEntry(date, time, exer, weig, sets, reps, effo);
+      var button = document.getElementById("circle-button");
+      button.dataset.status = "button";
     };
-
-    
-
-    var button = document.getElementById("circle-button");
-    button.dataset.status = "button";
 
   });
 
