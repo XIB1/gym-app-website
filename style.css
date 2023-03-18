@@ -7,6 +7,9 @@ html,body{
   font-family: 'Trebuchet MS', sans-serif;
   min-height: 100vh;
 }
+body::-webkit-scrollbar {
+  display: none;
+}
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
@@ -18,15 +21,6 @@ table, th, td {
   position: relative;
   width: 100%;
 }
-/*
-#button-holder {
-  position: fixed;
-  width: 100%;
-  height: 300px;
-  bottom: 0%;
-  left: 0px;
-  z-index: 0;
-}*/
 
 .bigbutton {
   position: fixed;
@@ -43,8 +37,8 @@ table, th, td {
 
   bottom: 15px;
   right: 15px;
-  width: 150px;
-  height: 150px;
+  width: 125px;
+  height: 125px;
 
   border: 1vw solid #bbb;
   border-radius: 100%;
@@ -59,17 +53,17 @@ table, th, td {
 }
 
 #undo-button {
-  right: 190px;
+  right: 165px;
   bottom: 23px;
   
-  width: 75px;
-  height: 75px;
+  width: 50px;
+  height: 50px;
 
   border: 0.8vw solid #bbb;
 }
 .undo-icon {
   color: #bbb;
-  font-size: 28px;
+  font-size: 26px;
 }
 
 .bigbutton[data-status="hidden"] {
@@ -206,9 +200,7 @@ table, th, td {
 #selected-display::-webkit-scrollbar {
   display: none;
 }
-body::-webkit-scrollbar {
-  display: none;
-}
+
 
 .session-row {
   position: relative;
@@ -265,6 +257,7 @@ body::-webkit-scrollbar {
   color: #ccc;
   font-size: 16px;
   font-weight: 400;
+  cursor: pointer;
   background-color: #333335;
   transition: background-color 0.15s ease;
 }
@@ -325,16 +318,17 @@ body::-webkit-scrollbar {
   margin: 10px;
   background-color: #272729;
   font-family: 'Trebuchet MS', sans-serif;
-  font-size: 16px;
+  font-size: 17px;
   color: #ccc;
   padding-left: 10px;
 }
 
 .dropdown {
   position: relative;
+  width: 100%;
 }
 .dropdown-content{
-  overflow-y: scroll;
+  overflow-y:auto;
   position: fixed;
   top: 5%;
   left: 5%;
@@ -342,7 +336,7 @@ body::-webkit-scrollbar {
   max-height: 90%;
 
   opacity: 100%;
-  background-color: #f1f1f1;
+  background-color: #313133;
 
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -355,12 +349,37 @@ body::-webkit-scrollbar {
   display: block;
 }
 .dropdown-content a {
-  color: black;
+  color: #ccc;
   padding: 12px 16px;
+  font-size: 17px;
+  font-weight: 100;
   text-decoration: none;
   display: block;
 }
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {background-color: #434345;}
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
+#form-button-holder {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  gap: 10px;
+  align-items:center;
+  justify-content:center;
+}
+
+.form-button {
+  height: 100%;
+  width: 30%;
+  border: none;
+  color: #ccc;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  background-color: #333335;
+  transition: background-color 0.15s ease;
+}
+.form-button:hover {
+  background-color: #3b3b3d;
+}

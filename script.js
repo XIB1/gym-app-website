@@ -355,15 +355,25 @@ window.onload = function() {
     event.preventDefault();
     var date = document.getElementById("dat-input").value;
     var time = document.getElementById("tim-input").value;
-    var exce = document.getElementById("exc-input").value;
+    var exer = document.getElementById("exc-input").value;
     var weig = document.getElementById("wei-input").value;
     var sets = document.getElementById("set-input").value;
     var reps = document.getElementById("rep-input").value;
     var effo = document.getElementById("eff-input").value;
 
-    effo = effDict[effo]
+    effo = effDict[effo];
 
-    addEntry(date, time, exce, weig, sets, reps, effo);
+    var arr = [date, time, exer, weig, sets, reps, effo];
+    
+    var hasNull = arr.some(el => !el);
+
+    if (hasNull) {
+      window.alert("Please fill all fields");
+    } else {
+      addEntry(date, time, exer, weig, sets, reps, effo);
+    };
+
+    
 
     var button = document.getElementById("circle-button");
     button.dataset.status = "button";
