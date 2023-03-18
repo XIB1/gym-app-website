@@ -268,6 +268,7 @@ function showSession(event) {
               var delicon = document.createElement("i");
               delicon.classList.add("fa-solid");
               delicon.classList.add("fa-xmark");
+              delicon.classList.add("del-icon");
               delbutton.appendChild(delicon);
               delbutton.addEventListener("click", deleteEntry, false);
               exe.appendChild(delbutton);
@@ -340,6 +341,7 @@ window.onload = function() {
 
   document.getElementById("circle-button").addEventListener("click", function() {
     var button = document.getElementById("circle-button");
+    var button2 = document.getElementById("undo-button");
     var selSession = document.getElementById("selected-session");
 
     if (selSession.dataset.status == "show") {
@@ -356,14 +358,30 @@ window.onload = function() {
       document.getElementById("tim-input").value = h + ":" + min;
 
       button.dataset.status = "hidden";
+      button2.dataset.status = "hidden";
       document.getElementById("form-holder").dataset.status = "show";
     };
+  });
+
+  document.getElementById("circle-button").addEventListener("click", function() {
+    var selSession = document.getElementById("selected-session");
+
+    if (selSession.dataset.status == "show") {
+      selSession.dataset.status = "hide";
+    };
+
+    window.alert("Undo last delete?");
+
+
+
   });
 
   document.getElementById("cancel-button").addEventListener("click", function(event) {
     event.stopPropagation();
     var button = document.getElementById("circle-button");
+    var button2 = document.getElementById("undo-button");
     button.dataset.status = "button";
+    button2.dataset.status = "button";
     document.getElementById("form-holder").dataset.status = "hide";
   });
 
