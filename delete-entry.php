@@ -13,7 +13,7 @@
     exit;
   }
 
-  $sql = "delete from lifts where id_lift = '$id'";
+  $sql = "delete from lifts where lift_id = '$id'";
   if ($conn->query($sql) === TRUE) {
     echo "Record deleted successfully";
   }

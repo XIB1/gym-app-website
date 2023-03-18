@@ -24,11 +24,11 @@ select
     sets,
     reps,
     effort,
-    id_lift
+    lift_id
 from
     lifts l
 left join
-    exercise e on l.exeid = e.exeid
+    exercise e on l.exe_id = e.exe_id
 where
     date = '" . $date . "'
 order by 
