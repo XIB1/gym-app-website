@@ -31,6 +31,7 @@ left join
     exercise e on l.exe_id = e.exe_id
 where
     date = '" . $date . "'
+    and deleted_indicator is null
 order by 
     time desc
 ");

@@ -15,11 +15,11 @@
 
   $sql = "
   update lifts
-  set deleted_indicator = 'D', deleted_timestamp = current_timestamp
-  where lift_id = '$id'
+  set deleted_indicator = null, deleted_timestamp = null
+  where deleted_timestamp = (select t from (select max(deleted_timestamp) as t from lifts) as a)
   ";
   if ($conn->query($sql) === TRUE) {
-    echo "Record deleted successfully";
+    echo "Record restored successfully";
   }
   else {
     echo "Error: " . $sql . "<br>" . $conn->error;

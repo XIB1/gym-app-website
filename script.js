@@ -36,7 +36,7 @@ function populateEntries() {
       for (const date in dates) {
 
         var entry = entries.filter(item => item.date == dates[date]);
-
+        
         var exeArray = [];
         var exer = new String();
         var time = new String(entry[0].time);
@@ -238,6 +238,7 @@ function showSession(event) {
     xhr.open("GET", "get-session.php?date=" + dat, true);
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+
         var result = JSON.parse(xhr.responseText);
 
         for (row in result) {
@@ -246,7 +247,7 @@ function showSession(event) {
           exe.classList.add("currentsess");
 
           for (att in result[row]) {
-            if (att != "id_lift") {
+            if (att != "lift_id") {
               var attribute = document.createElement("div");
               attribute.classList.add("session-attribute");
               attribute.classList.add("currentsess");
@@ -278,7 +279,6 @@ function showSession(event) {
           session.querySelector("#selected-display").appendChild(exe);
 
         };
-        
       };
     };
     xhr.send();
@@ -299,10 +299,41 @@ function deleteEntry(event) {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "delete-entry.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+
+      if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+        removeElementsByClass("sesscont");
+        populateEntries();
+      };
+
+    };
     xhr.send("id=" + encodeURIComponent(id));
     
-    removeElementsByClass("sesscont");
-    populateEntries();
+
+  };
+};
+function restoreLast() {
+  var selSession = document.getElementById("selected-session");
+
+  if (selSession.dataset.status == "show") {
+    selSession.dataset.status = "hide";
+  };
+
+  if (window.confirm("Undo last delete?")) {
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "restore-entry.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+
+      if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+        removeElementsByClass("sesscont");
+        populateEntries();
+      };
+
+    };
+    xhr.send();
+
   };
 };
 
@@ -363,17 +394,8 @@ window.onload = function() {
     };
   });
 
-  document.getElementById("circle-button").addEventListener("click", function() {
-    var selSession = document.getElementById("selected-session");
-
-    if (selSession.dataset.status == "show") {
-      selSession.dataset.status = "hide";
-    };
-
-    window.alert("Undo last delete?");
-
-
-
+  document.getElementById("undo-button").addEventListener("click", function() {
+    restoreLast();
   });
 
   document.getElementById("cancel-button").addEventListener("click", function(event) {
