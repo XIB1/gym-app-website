@@ -2,20 +2,32 @@
 
 html,body{
   overflow-x: visible;
-  background: rgb(0,7,36);
-  background: linear-gradient(0deg, #00000B 0%, #30303B 85%, #40404B 100%);
   font-family: 'Trebuchet MS', sans-serif;
   min-height: 100vh;
+  background-attachment: fixed;
 }
 body::-webkit-scrollbar {
   display: none;
 }
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  padding: 5px;
-}
 
+
+.bg {
+  background: linear-gradient(0deg, #00000B 0%, #30303B 85%, #40404B 100%);
+  width: 105vw;
+  height: 105vh;
+  left: -8px;
+  top: -8px;
+  position: absolute;
+  z-index: -1;
+}
+.bg2 {
+  background: #00000B;
+  width: 105vw;
+  height: 100%;
+  left: -8px;
+  position: fixed;
+  z-index: -2;
+}
 
 #session-container {
   position: relative;
