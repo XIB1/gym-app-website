@@ -1,7 +1,7 @@
 
 
 html,body{
-  overflow-x: hidden;
+  overflow-x: visible;
   background: rgb(0,7,36);
   background: linear-gradient(0deg, #00000B 0%, #30303B 85%, #40404B 100%);
   font-family: 'Trebuchet MS', sans-serif;
