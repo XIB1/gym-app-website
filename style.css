@@ -13,7 +13,7 @@ body::-webkit-scrollbar {
 
 .bg {
   background: linear-gradient(0deg, #00000B 0%, #30303B 85%, #40404B 100%);
-  width: 105vw;
+  width: calc(100vw + 8px);
   height: 105vh;
   left: -8px;
   top: -8px;
@@ -23,7 +23,8 @@ body::-webkit-scrollbar {
 .bg2 {
   background: #00000B;
   width: 105vw;
-  height: 100%;
+  height: 110%;
+  top: -5%;
   left: -8px;
   position: fixed;
   z-index: -2;
@@ -32,6 +33,17 @@ body::-webkit-scrollbar {
 #session-container {
   position: relative;
   width: 100%;
+}
+
+#button-holder {
+  position: fixed;
+  opacity: 0.8;
+  transition: opacity 0.4s linear, background-color 0.2s ease;
+  z-index: 99;
+}
+#button-holder[data-status="hidden"] {
+  opacity: 0;
+  pointer-events:none;
 }
 
 .bigbutton {
@@ -43,7 +55,7 @@ body::-webkit-scrollbar {
   color: #bbb;
   background-color: rgb(221, 221, 221, 0.2);
 
-  font-size: 10vw;
+  font-size: 70px;
   font-weight: 400;
   user-select: none;
 
@@ -55,11 +67,9 @@ body::-webkit-scrollbar {
   border: 1vw solid #bbb;
   border-radius: 100%;
 
-  opacity: 0.8;
-  transition: opacity 0.4s linear, background-color 0.2s ease;
+
   
   cursor: pointer;
-  z-index: 3;
 
   -webkit-tap-highlight-color: transparent;
 }
@@ -78,9 +88,20 @@ body::-webkit-scrollbar {
   font-size: 26px;
 }
 
-.bigbutton[data-status="hidden"] {
-  opacity: 0;
+#exercise-button {
+  right: 240px;
+  bottom: 23px;
+  
+  width: 50px;
+  height: 50px;
+
+  border: 0.8vw solid #bbb;
 }
+.exercise-icon {
+  color: #bbb;
+  font-size: 26px;
+}
+
 .bigbutton:hover {
   background-color: rgb(221, 221, 221, 0.4);
 }
@@ -351,6 +372,7 @@ body::-webkit-scrollbar {
 
   opacity: 100%;
   background-color: #313133;
+  background-color: rgb(24, 24, 32, 1);
 
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -367,7 +389,7 @@ body::-webkit-scrollbar {
   height: 25px;
   padding: 12px 16px;
   font-size: 17px;
-  font-weight: 100;
+  font-weight: 200;
   text-decoration: none;
   display: flex;
   vertical-align: middle;
@@ -402,4 +424,47 @@ body::-webkit-scrollbar {
 }
 .form-button:hover {
   background-color: #3b3b3d;
+}
+
+
+#exercise-screen {
+  background-color: #181820;
+  z-index: 5;
+  position: fixed;
+  right: 120vw;
+  top: 0%;
+  height: 100%;
+  width: 60vw;
+  z-index: 9;
+}
+
+#exercise-screen[data-status="show"] {
+  transform: rotate(0deg);
+  right: 40vw;
+  top: 0vh;
+  animation: slide-right-2 0.35s;
+  transition-timing-function: cubic-bezier(1, 0.01, 0.95, 0.85);
+}
+
+#exercise-screen[data-status="hide"] {
+  right: 120vw;
+  animation: slide-right-1 0.35s;
+  transition-timing-function: cubic-bezier(0.32, 0.84, 0.09, 1);
+}
+
+@keyframes slide-right-1 {
+  0% {right: 40vw;}
+  100% {right: 120vw;}
+}
+@keyframes slide-right-2 {
+  0% {right: 120vw;}
+  100% {right: 40vw;}
+}
+
+#exc-tab {
+  position: absolute;
+  color: #FFF;
+  width: 90%;
+  left: 5%;
+  top: 30px;
 }

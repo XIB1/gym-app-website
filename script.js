@@ -223,9 +223,10 @@ function addDropdowns() {
 };
 function showSession(event) {
   var form = document.getElementById("selected-session");
+  var form2 = document.getElementById("form-holder");
 
 
-  if (!(form.dataset.status == "show")){
+  if (!(form.dataset.status == "show") && !(form2.dataset.status == "show")){
 
     removeElementsByClass("currentsess");
 
@@ -336,7 +337,44 @@ function restoreLast() {
 
   };
 };
+function populateExercise() {
 
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "get-exercise.php", true);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+      var result = JSON.parse(xhr.responseText);
+
+      var el = document.getElementById("exc-tab");
+
+      for (j = 0; j < result.length; j++) {
+
+        var exc = document.createElement("tr");
+        exc.classList.add("exc-row");
+        exc.dataset.id = result[j].exe_id;
+
+        var e = document.createElement("td");
+        e.innerHTML = result[j].exercise;
+        var u = document.createElement("a");
+        u.href = result[j].url;
+        u.target = "_blank";
+        var i = document.createElement("i");
+        i.classList.add("fa-solid");
+        i.classList.add("fa-link");
+        u.appendChild(i);
+
+        exc.appendChild(e);
+        exc.appendChild(u);
+        exc.href = "#";
+        el.appendChild(exc);
+      };
+      
+
+    };
+  };
+  xhr.send();
+
+};
 
 window.onload = function() {
 
@@ -376,15 +414,14 @@ window.onload = function() {
   });
 
   document.getElementById("circle-button").addEventListener("click", function() {
-    var button = document.getElementById("circle-button");
-    var button2 = document.getElementById("undo-button");
+    var buttons = document.getElementById("button-holder");
     var selSession = document.getElementById("selected-session");
 
     if (selSession.dataset.status == "show") {
       selSession.dataset.status = "hide";
     };
 
-    if (button.dataset.status == "button") {
+    if (buttons.dataset.status == "button") {
 
       var td = new Date();
       var h = td.getHours();
@@ -393,8 +430,7 @@ window.onload = function() {
       document.getElementById("dat-input").valueAsDate = td;
       document.getElementById("tim-input").value = h + ":" + min;
 
-      button.dataset.status = "hidden";
-      button2.dataset.status = "hidden";
+      buttons.dataset.status = "hidden";
       document.getElementById("form-holder").dataset.status = "show";
     };
   });
@@ -403,12 +439,20 @@ window.onload = function() {
     restoreLast();
   });
 
+  document.getElementById("exercise-button").addEventListener("click", function(event){
+    event.stopPropagation();
+    document.getElementById("exercise-screen").dataset.status = "show";
+    var sess = document.getElementById("selected-session");
+    if (sess.dataset.status == "show") {
+      sess.dataset.status = "hide";
+    }
+    populateExercise();
+  });
+
   document.getElementById("cancel-button").addEventListener("click", function(event) {
     event.stopPropagation();
-    var button = document.getElementById("circle-button");
-    var button2 = document.getElementById("undo-button");
-    button.dataset.status = "button";
-    button2.dataset.status = "button";
+    var buttons = document.getElementById("button-holder");
+    buttons.dataset.status = "button";
     document.getElementById("form-holder").dataset.status = "hide";
   });
 
@@ -433,6 +477,16 @@ window.onload = function() {
     if (open == false) {
       setOpaque();
     };
+
+
+    let excScreen = document.querySelector('#exercise-screen');
+
+    if (excScreen.dataset.status == "show" && !(excScreen.contains(event.target))) {
+      excScreen.dataset.status = "hide";
+      removeElementsByClass("exc-row")
+    };
+
+    
     
   };
 

@@ -16,7 +16,9 @@ if (!$conn) {
 //$result = mysqli_query($conn, "SELECT Date, Time, Exercise, Weight, Sets, Reps, Effort FROM lifts");
 $result = mysqli_query($conn, "
   select 
-    exercise
+    exercise,
+    exe_id,
+    url
   from
     exercise
   order by
