@@ -407,7 +407,7 @@ window.onload = function() {
       window.alert("Please fill all fields");
     } else {
       addEntry(date, time, exer, weig, sets, reps, effo);
-      var button = document.getElementById("circle-button");
+      var button = document.getElementById("button-holder");
       button.dataset.status = "button";
     };
 
