@@ -4,15 +4,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="style.css">
   <script type = "text/javascript" src="script.js" defer></script>
-  <title>Mobile Website</title>
+  <script src="https://kit.fontawesome.com/4a8ac33215.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+  <title>Gym Log</title>
+  <link rel="icon"  href="img/icon2.png">
 </head>
 
 <body>
+  <div class="bg"></div>
+  <div class="bg2"></div>
 
   <div id="selected-session" data-status="none">
+
+    <div class="session-row header">
+      <div class="session-attribute head time">Time</div>
+      <div class="session-attribute head exercise">Exercise</div>
+      <div class="session-attribute head weight">Weight</div>
+      <div class="session-attribute head sets">Sets</div>
+      <div class="session-attribute head reps">Reps</div>
+      <div class="session-attribute head effort">Effort</div>
+      <div class="session-attribute head delbutton">Delete</div>
+    </div>
     <div id="selected-display"></div>
     <div id="selected-buttons">
-      <button type="button" id="close-selected">Close</button>
+      <button type="button" class="button" id="close-selected">Close</button>
     </div>
   </div>
 
@@ -21,47 +38,62 @@
   <div id="form-holder" data-status="none">
     <form id="add-entry-form" class="entry-form opaque" >
 
-      <input type="date" class="dropbtn" id="dat-input" placeholder="Date">
-      <input type="time" class="dropbtn" id="tim-input" placeholder="Time">
+      <input type="date" class="form-input" id="dat-input" placeholder="Date">
+      <input type="time" class="form-input" id="tim-input" placeholder="Time">
 
       <div class="dropdown" onclick="showList(event)">
-        <input class="dropbtn" readonly="readonly" type="text" id="exc-input" placeholder="Excercise">
+        <input class="form-input" readonly="readonly" type="text" id="exc-input" placeholder="Excercise">
         <div class="dropdown-content exc-input" data-status="hide"></div>
       </div>
       
       <div class="dropdown" onclick="showList(event)">
-        <input class="dropbtn" readonly="readonly" type="text" id="wei-input" placeholder="Weight">
+        <input class="form-input" readonly="readonly" type="text" id="wei-input" placeholder="Weight">
         <div class="dropdown-content numeric wei-input" data-range="5,200,5" data-status="hide"></div>
       </div>
 
       <div class="dropdown" onclick="showList(event)">
-        <input class="dropbtn" readonly="readonly" type="text" id="set-input" placeholder="Sets">
+        <input class="form-input" readonly="readonly" type="text" id="set-input" placeholder="Sets">
         <div class="dropdown-content numeric set-input" data-range="1,10,1" data-status="hide"></div>
       </div>
 
       <div class="dropdown" onclick="showList(event)">
-        <input class="dropbtn" readonly="readonly" type="text" id="rep-input" placeholder="Reps">
+        <input class="form-input" readonly="readonly" type="text" id="rep-input" placeholder="Reps">
         <div class="dropdown-content numeric rep-input" data-range="1,25,1" data-status="hide"></div>
       </div>
 
       <div class="dropdown" onclick="showList(event)">
-        <input class="dropbtn" readonly="readonly" type="text" id="eff-input" placeholder="Effort">
+        <input class="form-input" readonly="readonly" type="text" id="eff-input" placeholder="Effort">
         <div class="dropdown-content eff-input"  data-status="hide">
           <a class="eff" href="#" onclick="selectItem(event)">Easy</a>
           <a class="eff" href="#" onclick="selectItem(event)">Medium</a>
           <a class="eff" href="#" onclick="selectItem(event)">Hard</a>
         </div>
       </div>
-
-      <button type="submit">Submit</button>
-      <button type="button" id="cancel-button">Cancel</button>
+      
+      <div id="form-button-holder">
+        <button type="submit" class="form-button">Submit</button>
+        <button type="button" class="form-button" id="cancel-button">Cancel</button>
+      </div>
 
     </form>
   </div>
 
-  <div id = "button-holder">
-    <div id="circle-button" data-status="button" >+
+  <div id="exercise-screen" data-status="none">
+    <table id="exc-tab">
+      <tr>
+        <td>Exercise</td>
+        <td>Info</td>
+      </tr>
+    </table>
+  </div>
 
+  <div id="button-holder" data-status="button" >
+    <div id="circle-button" class="bigbutton" data-status="button" >+</div>
+    <div id="undo-button" class="bigbutton" data-status="button">
+      <i class="fa-sharp fa-solid fa-rotate-left undo-icon"></i>
+    </div>
+    <div id="exercise-button" class="bigbutton" data-status="button">
+      <i class="fa-sharp fa-solid fa-dumbbell exercise-icon"></i>
     </div>
   </div>
 

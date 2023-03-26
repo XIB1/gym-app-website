@@ -26,7 +26,9 @@ select
 from
     lifts l
 left join
-    exercise e on l.exeid = e.exeid
+    exercise e on l.exe_id = e.exe_id
+where
+    deleted_indicator is null
 ");
 
 // Check the result

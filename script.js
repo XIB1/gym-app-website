@@ -36,7 +36,7 @@ function populateEntries() {
       for (const date in dates) {
 
         var entry = entries.filter(item => item.date == dates[date]);
-
+        
         var exeArray = [];
         var exer = new String();
         var time = new String(entry[0].time);
@@ -93,8 +93,9 @@ function populateEntries() {
 
         var sessBoxCont = document.createElement("div");
         sessBoxCont.classList.add("sessboxcont");
+        sessBoxCont.dataset.date = dates[date];
 
-        sessBoxCont.setAttribute("onclick", "showSession()");
+        sessBoxCont.setAttribute("onclick", "showSession(event)");
 
         boxCont.appendChild(dateBox);
         boxCont.appendChild(excBox);
@@ -220,19 +221,168 @@ function addDropdowns() {
   xhr.send();
 
 };
-function showSession() {
-  var form = document.getElementById("form-holder");
-  if (!(form.dataset.status == "show")){
-    document.getElementById("selected-session").dataset.status = "show";
+function showSession(event) {
+  var form = document.getElementById("selected-session");
+  var form2 = document.getElementById("form-holder");
+
+
+  if (!(form.dataset.status == "show") && !(form2.dataset.status == "show")){
+
+    removeElementsByClass("currentsess");
+
+    var session = document.getElementById("selected-session");
+    session.dataset.status = "show";
+
+    var dat = event.currentTarget.dataset.date;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "get-session.php?date=" + dat, true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+
+        var result = JSON.parse(xhr.responseText);
+
+        for (row in result) {
+          var exe = document.createElement("div");
+          exe.classList.add("session-row");
+          exe.classList.add("currentsess");
+
+          for (att in result[row]) {
+            if (att != "lift_id") {
+              var attribute = document.createElement("div");
+              attribute.classList.add("session-attribute");
+              attribute.classList.add("currentsess");
+              attribute.classList.add(att);
+              if (att == "weight") {
+                attribute.innerHTML = result[row][att] + " kg";
+              } else if (att == "sets" || att == "reps") {
+                attribute.innerHTML = result[row][att] + "x";
+              } else {
+                attribute.innerHTML = result[row][att]
+              };
+              exe.appendChild(attribute);
+            } else {
+              var delbutton = document.createElement("div");
+              delbutton.classList.add("session-attribute");
+              delbutton.classList.add("currentsess");
+              delbutton.classList.add("delbutton");
+              delbutton.dataset.id = result[row][att]
+              var delicon = document.createElement("i");
+              delicon.classList.add("fa-solid");
+              delicon.classList.add("fa-xmark");
+              delicon.classList.add("del-icon");
+              delbutton.appendChild(delicon);
+              delbutton.addEventListener("click", deleteEntry, false);
+              exe.appendChild(delbutton);
+            };
+          };
+
+          session.querySelector("#selected-display").appendChild(exe);
+
+        };
+      };
+    };
+    xhr.send();
+
   };
 };
+function deleteEntry(event) {
+  event.stopPropagation();
+  if (window.confirm("Are you sure you want to delete this entry?")) {
+    var button = event.currentTarget;
+    var childen = button.parentNode.parentNode.children.length;
+    var id = button.dataset.id;
+    button.parentNode.remove();
+    if (childen == 1) {
+      document.getElementById("selected-session").dataset.status = "hide";
+    };
 
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "delete-entry.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+
+      if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+        removeElementsByClass("sesscont");
+        populateEntries();
+      };
+
+    };
+    xhr.send("id=" + encodeURIComponent(id));
+    
+
+  };
+};
+function restoreLast() {
+  var selSession = document.getElementById("selected-session");
+
+  if (selSession.dataset.status == "show") {
+    selSession.dataset.status = "hide";
+  };
+
+  if (window.confirm("Undo last delete?")) {
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "restore-entry.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+
+      if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+        removeElementsByClass("sesscont");
+        populateEntries();
+      };
+
+    };
+    xhr.send();
+
+  };
+};
+function populateExercise() {
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "get-exercise.php", true);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+      var result = JSON.parse(xhr.responseText);
+
+      var el = document.getElementById("exc-tab");
+
+      for (j = 0; j < result.length; j++) {
+
+        var exc = document.createElement("tr");
+        exc.classList.add("exc-row");
+        exc.dataset.id = result[j].exe_id;
+
+        var e = document.createElement("td");
+        e.innerHTML = result[j].exercise;
+        var u = document.createElement("a");
+        u.href = result[j].url;
+        u.target = "_blank";
+        var i = document.createElement("i");
+        i.classList.add("fa-solid");
+        i.classList.add("fa-link");
+        u.appendChild(i);
+
+        exc.appendChild(e);
+        exc.appendChild(u);
+        exc.href = "#";
+        el.appendChild(exc);
+      };
+      
+
+    };
+  };
+  xhr.send();
+
+};
 
 window.onload = function() {
 
   populateEntries();
 
   addDropdowns();
+
+  populateExercise();
 
   var effDict = {
     "Easy": "E",
@@ -245,30 +395,35 @@ window.onload = function() {
     event.preventDefault();
     var date = document.getElementById("dat-input").value;
     var time = document.getElementById("tim-input").value;
-    var exce = document.getElementById("exc-input").value;
+    var exer = document.getElementById("exc-input").value;
     var weig = document.getElementById("wei-input").value;
     var sets = document.getElementById("set-input").value;
     var reps = document.getElementById("rep-input").value;
     var effo = document.getElementById("eff-input").value;
 
-    effo = effDict[effo]
+    effo = effDict[effo];
+    
+    var hasNull = [date, time, exer, weig, sets, reps, effo].some(el => !el);
 
-    addEntry(date, time, exce, weig, sets, reps, effo);
-
-    var button = document.getElementById("circle-button");
-    button.dataset.status = "button";
+    if (hasNull) {
+      window.alert("Please fill all fields");
+    } else {
+      addEntry(date, time, exer, weig, sets, reps, effo);
+      var button = document.getElementById("button-holder");
+      button.dataset.status = "button";
+    };
 
   });
 
   document.getElementById("circle-button").addEventListener("click", function() {
-    var button = document.getElementById("circle-button");
+    var buttons = document.getElementById("button-holder");
     var selSession = document.getElementById("selected-session");
 
     if (selSession.dataset.status == "show") {
       selSession.dataset.status = "hide";
     };
 
-    if (button.dataset.status == "button") {
+    if (buttons.dataset.status == "button") {
 
       var td = new Date();
       var h = td.getHours();
@@ -277,15 +432,36 @@ window.onload = function() {
       document.getElementById("dat-input").valueAsDate = td;
       document.getElementById("tim-input").value = h + ":" + min;
 
-      button.dataset.status = "hidden";
+      buttons.dataset.status = "hidden";
       document.getElementById("form-holder").dataset.status = "show";
     };
   });
 
+  document.getElementById("undo-button").addEventListener("click", function() {
+    restoreLast();
+  });
+
+  document.getElementById("exercise-button").addEventListener("click", function(event){
+    event.stopPropagation();
+
+    var exerciseList = document.getElementById("exercise-screen");
+
+    if (exerciseList.dataset.status == "show") {
+      exerciseList.dataset.status = "hide";
+    } else {
+      document.getElementById("exercise-screen").dataset.status = "show";
+      var sess = document.getElementById("selected-session");
+      if (sess.dataset.status == "show") {
+        sess.dataset.status = "hide";
+      };
+    };
+
+  });
+
   document.getElementById("cancel-button").addEventListener("click", function(event) {
     event.stopPropagation();
-    var button = document.getElementById("circle-button");
-    button.dataset.status = "button";
+    var buttons = document.getElementById("button-holder");
+    buttons.dataset.status = "button";
     document.getElementById("form-holder").dataset.status = "hide";
   });
 
@@ -310,6 +486,16 @@ window.onload = function() {
     if (open == false) {
       setOpaque();
     };
+
+
+    let excScreen = document.querySelector('#exercise-screen');
+
+    if (excScreen.dataset.status == "show" && !(excScreen.contains(event.target))) {
+      excScreen.dataset.status = "hide";
+      removeElementsByClass("exc-row")
+    };
+
+    
     
   };
 

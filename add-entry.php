@@ -28,8 +28,8 @@
     exit;
   }
 
-  $sql = "INSERT INTO lifts (Date, Time, exeid, Weight, Sets, Reps, Effort)
-          VALUES ('$field1', '$field2', (select exeid from exercise where exercise = '$field3'), '$field4', '$field5', '$field6', '$field7')";
+  $sql = "INSERT INTO lifts (Date, Time, exe_id, Weight, Sets, Reps, Effort)
+          VALUES ('$field1', '$field2', (select exe_id from exercise where exercise = '$field3'), '$field4', '$field5', '$field6', '$field7')";
   if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
   }

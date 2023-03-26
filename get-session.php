@@ -1,5 +1,7 @@
 <?php
 
+$date = $_GET["date"];
+
 // Connect to the database
 $conn = mysqli_connect("34.88.150.1", "app-user", "983298", "gym-db");
 
@@ -15,14 +17,23 @@ if (!$conn) {
 // Execute the query to retrieve the entries from the database
 //$result = mysqli_query($conn, "SELECT Date, Time, Exercise, Weight, Sets, Reps, Effort FROM lifts");
 $result = mysqli_query($conn, "
-  select 
+select 
+    substr(time, 1,5) as time,
     exercise,
-    exe_id,
-    url
-  from
-    exercise
-  order by
-    exercise
+    weight,
+    sets,
+    reps,
+    effort,
+    lift_id
+from
+    lifts l
+left join
+    exercise e on l.exe_id = e.exe_id
+where
+    date = '" . $date . "'
+    and deleted_indicator is null
+order by 
+    time desc
 ");
 
 // Check the result
