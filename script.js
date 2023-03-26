@@ -382,6 +382,8 @@ window.onload = function() {
 
   addDropdowns();
 
+  populateExercise();
+
   var effDict = {
     "Easy": "E",
     "Medium": "M",
@@ -441,12 +443,19 @@ window.onload = function() {
 
   document.getElementById("exercise-button").addEventListener("click", function(event){
     event.stopPropagation();
-    document.getElementById("exercise-screen").dataset.status = "show";
-    var sess = document.getElementById("selected-session");
-    if (sess.dataset.status == "show") {
-      sess.dataset.status = "hide";
-    }
-    populateExercise();
+
+    var exerciseList = document.getElementById("exercise-screen");
+
+    if (exerciseList.dataset.status == "show") {
+      exerciseList.dataset.status = "hide";
+    } else {
+      document.getElementById("exercise-screen").dataset.status = "show";
+      var sess = document.getElementById("selected-session");
+      if (sess.dataset.status == "show") {
+        sess.dataset.status = "hide";
+      };
+    };
+
   });
 
   document.getElementById("cancel-button").addEventListener("click", function(event) {
