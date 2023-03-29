@@ -2,6 +2,10 @@
 
 # Google APIs Client Library for PHP #
 
+**NOTE**: please check to see if the package you'd like to install is available in our
+list of [Google cloud packages](https://cloud.google.com/php/docs/reference) first, as
+these are the recommended libraries.
+
 <dl>
   <dt>Reference Docs</dt><dd><a href="https://googleapis.github.io/google-api-php-client/main/">https://googleapis.github.io/google-api-php-client/main/</a></dd>
   <dt>License</dt><dd>Apache 2.0</dd>
@@ -9,7 +13,7 @@
 
 The Google API Client Library enables you to work with Google APIs such as Gmail, Drive or YouTube on your server.
 
-These client libraries are officially supported by Google.  However, the libraries are considered complete and are in maintenance mode. This means that we will address critical bugs and security issues but will not add any new features.
+These client libraries are officially supported by Google. However, the libraries are considered complete and are in maintenance mode. This means that we will address critical bugs and security issues but will not add any new features.
 
 ## Google Cloud Platform
 
@@ -79,7 +83,7 @@ This example will remove all services other than "Drive" and "YouTube" when
 `composer update` or a fresh `composer install` is run.
 
 **IMPORTANT**: If you add any services back in `composer.json`, you will need to
-remove the `vendor/google/apiclient-services` directory explicity for the
+remove the `vendor/google/apiclient-services` directory explicitly for the
 change you made to have effect:
 
 ```sh
@@ -454,7 +458,7 @@ $opt_params = array(
 
 ### How do I set a field to null? ###
 
-The library strips out nulls from the objects sent to the Google APIs as its the default value of all of the uninitialized properties. To work around this, set the field you want to null to `Google\Model::NULL_VALUE`. This is a placeholder that will be replaced with a true null when sent over the wire.
+The library strips out nulls from the objects sent to the Google APIs as it is the default value of all of the uninitialized properties. To work around this, set the field you want to null to `Google\Model::NULL_VALUE`. This is a placeholder that will be replaced with a true null when sent over the wire.
 
 ## Code Quality ##
 

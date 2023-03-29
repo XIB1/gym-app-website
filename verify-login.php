@@ -1,5 +1,5 @@
 <?php
-require_once 'google-api-php-client/'; // include the Google API PHP client library
+require_once 'C:/repos/gym-app-website/vendor/autoload.php'; // include the Google API PHP client library
 
 // set up the client object
 $client = new Google_Client(['client_id' => '636033609809-dt5m30p5qurko02s9docsqlnoc6232nb.apps.googleusercontent.com']);
