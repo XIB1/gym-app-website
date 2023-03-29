@@ -375,8 +375,35 @@ function populateExercise() {
   xhr.send();
 
 };
+function getCookie() {
+  var cookies = document.cookie.split('; ');
+
+  console.log(cookies);
+  // iterate over each cookie and check if the user_id cookie exists
+  for (var i = 0; i < cookies.length; i++) {
+    var parts = cookies[i].split('=');
+    var name = parts[0];
+    var value = parts[1];
+    if (name === 'user_id') {
+      // if the user_id cookie exists, do something with the user ID value
+      console.log('User ID:', value);
+      break;
+    }
+  }
+}
+function testCookie() { 
+  var now = new Date();
+  var expiration = new Date(now.getTime() + 20 * 1000);
+  document.cookie = "user_id=user1; expires=" + expiration.toUTCString() + "; path=/";
+}
 
 window.onload = function() {
+
+
+  //testCookie();
+
+  getCookie();
+
 
   populateEntries();
 
