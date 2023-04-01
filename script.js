@@ -29,7 +29,7 @@ function removeElementsByClass(className){
 };
 function populateEntries() {
   
-  const userToken= getCookie("googleAuth");
+  const userToken = getCookie("googleAuth");
 
   var entries = new Object();
 

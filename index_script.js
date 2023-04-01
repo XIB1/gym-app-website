@@ -17,7 +17,6 @@ window.onload = function() {
   google.accounts.id.initialize({
     client_id: "636033609809-dt5m30p5qurko02s9docsqlnoc6232nb.apps.googleusercontent.com",
     callback: (response) => {
-      console.log(parseJwt(response.credential));
 
       verifyLogin(response.credential);
 
