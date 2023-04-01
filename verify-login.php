@@ -1,12 +1,18 @@
 <?php
 
+include "jwt-decode.php";
+
+$user_token = $_POST["user_token"];
+
+$user_data = parseJwt($user_token);
+
+$oauth_uid = $user_data['sub'];
+$first_name = $user_data['given_name'];
+$last_name = $user_data['family_name'];
+$email = $user_data['email'];
+
 // Connect to the database
 $conn = mysqli_connect("34.88.150.1", "app-user", "983298", "gym-db");
-
-$oauth_uid = $_POST["oauth_uid"];
-$first_name = $_POST["first_name"];
-$last_name = $_POST["last_name"];
-$email = $_POST["email"];
 
 // Check the connection
 if (!$conn) {
