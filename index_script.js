@@ -24,9 +24,9 @@ window.onload = function() {
 
       
       if (window.location.href.includes("local")) {
-        window.location.href = "http://localhost:8000/gym-app-website/main.html"
+        window.location.href = "http://localhost:8000/gym-app-website/main.html";
       } else {
-        window.location.href = "https://gymlog.xyz/main.html"
+        window.location.href = "https://gymlog.xyz/main.html";
       };
       
     },

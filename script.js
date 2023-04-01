@@ -401,11 +401,11 @@ function populateExercise() {
 const userToken= getCookie("googleAuth");
 if (!getCookie("googleAuth")) {
   if (window.location.href.includes("local")) {
-    window.location.href = "http://localhost:8000/gym-app-website/index.html"
+    window.location.href = "http://localhost:8000/gym-app-website/index.html";
   } else {
-    window.location.href = "https://gymlog.xyz/index.html"
+    window.location.href = "https://gymlog.xyz/index.html";
   };
-}
+};
 
 window.onload = function() {
 
@@ -499,6 +499,21 @@ window.onload = function() {
   document.getElementById("close-selected").addEventListener("click", function(event) {
     event.stopPropagation();
     document.getElementById("selected-session").dataset.status = "hide";
+  });
+
+  document.getElementById("logout-button").addEventListener("click", function(event) {
+    event.stopPropagation();
+
+    if (window.confirm("Are you sure you want to log out?")) {
+
+      document.cookie = "googleAuth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+      if (window.location.href.includes("local")) {
+        window.location.href = "http://localhost:8000/gym-app-website/index.html";
+      } else {
+        window.location.href = "https://gymlog.xyz/index.html";
+      };
+    };
   });
 
   window.onclick = function(event) {
