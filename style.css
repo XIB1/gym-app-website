@@ -38,7 +38,6 @@ body::-webkit-scrollbar {
 #button-holder {
   position: fixed;
   opacity: 0.8;
-  transition: opacity 0.4s linear, background-color 0.2s ease;
   z-index: 99;
 }
 #button-holder[data-status="hidden"] {
@@ -54,6 +53,7 @@ body::-webkit-scrollbar {
 
   color: #fff;
   background-color: rgb(221, 221, 221, 0.2);
+  transition: opacity 0.4s linear, background-color 0.2s ease;
 
   text-shadow: #000 2px 2px 5px;
   -webkit-font-smoothing: antialiased;
@@ -207,6 +207,7 @@ body::-webkit-scrollbar {
 
 #selected-session {
   background-color: #181820;
+  box-shadow: rgb(0, 0, 0, 0.8) 3px 3px 3px;
   z-index: 5;
   position: fixed;
   bottom: 120vh;
@@ -241,7 +242,7 @@ body::-webkit-scrollbar {
   position: relative;
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 90%;
+  height: 85%;
 
 }
 #selected-display::-webkit-scrollbar {
@@ -254,14 +255,16 @@ body::-webkit-scrollbar {
   height: 60px;
   display: flex;
   flex-direction: row;
-  margin: 15px;
+  margin: 3%;
   background-color: #272729;
   -webkit-tap-highlight-color: transparent;
 }
 .session-row.header {
-  height: 16px;
-  padding-top: 10px;
-  margin-bottom: 5px;
+  height: 5%;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  margin-top: 0px;
   font-size: 12px;
   background-color: #181820;
 }
@@ -291,9 +294,13 @@ body::-webkit-scrollbar {
 }
 
 #selected-buttons {
-  position: relative;
+  position: absolute;
+  bottom: 0%;
   height: 10%;
+  right: 0%;
+  left: 0%;
   background-color: #333335;
+  box-shadow: #111 0px -1px 2px;
 }
 #close-selected {
   position: relative;
@@ -327,6 +334,7 @@ body::-webkit-scrollbar {
   top: 50%;
   animation: slide-up 0.35s;
   transition-timing-function: cubic-bezier(0.32, 0.84, 0.09, 1);
+  box-shadow: rgb(0, 0, 0, 0.5) 2px 2px 2px;
 } 
 
 #form-holder[data-status="hide"]{
@@ -458,6 +466,7 @@ body::-webkit-scrollbar {
   top: 0vh;
   animation: slide-right-2 0.35s;
   transition-timing-function: cubic-bezier(1, 0.01, 0.95, 0.85);
+  box-shadow: rgb(0, 0, 0, 0.5) 2px 2px 2px;
 }
 
 #exercise-screen[data-status="hide"] {
