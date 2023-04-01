@@ -336,6 +336,9 @@ function deleteEntry(event) {
   };
 };
 function restoreLast() {
+
+  const userToken= getCookie("googleAuth");
+
   var selSession = document.getElementById("selected-session");
 
   if (selSession.dataset.status == "show") {
@@ -355,7 +358,7 @@ function restoreLast() {
       };
 
     };
-    xhr.send();
+    xhr.send("user_token=" + encodeURIComponent(userToken));
 
   };
 };
@@ -533,14 +536,13 @@ window.onload = function() {
       setOpaque();
     };
 
-
+    
     let excScreen = document.querySelector('#exercise-screen');
 
     if (excScreen.dataset.status == "show" && !(excScreen.contains(event.target))) {
       excScreen.dataset.status = "hide";
-      removeElementsByClass("exc-row")
     };
-
+    
     
     
   };
