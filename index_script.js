@@ -17,7 +17,18 @@ function verifyLogin(userData) {
       console.log(xhr.responseText);
     }
   };
-  xhr.send('oauth_uid=' + encodeURIComponent(userData.sub));
+
+  var oauth_uid = encodeURIComponent(userData.sub);
+  var first_name =  encodeURIComponent(userData.given_name);
+  var last_name = encodeURIComponent(userData.family_name);
+  var email = encodeURIComponent(userData.email);
+
+  xhr.send(
+    "oauth_uid=" + oauth_uid + 
+    "&first_name=" + first_name + 
+    "&last_name=" + last_name + 
+    "&email=" + email
+  );
 };
 
 window.onload = function() {
@@ -28,22 +39,20 @@ window.onload = function() {
     client_id: "636033609809-dt5m30p5qurko02s9docsqlnoc6232nb.apps.googleusercontent.com",
     callback: (response) => {
       console.log(parseJwt(response.credential));
-      console.log(parseJwt(response.credential).sub);
 
       const userData = parseJwt(response.credential);
 
       verifyLogin(userData);
 
       document.cookie = "googleAuth=" + response.credential + "; expires=" + expirationDate.toUTCString() + "; path=/";
-      console.log(window.location.href);
 
-      /*
+      
       if (window.location.href.includes("local")) {
         window.location.href = "http://localhost:8000/gym-app-website/main.html"
       } else {
         window.location.href = "https://gymlog.xyz/main.html"
       };
-      */
+      
     },
     auto_select: false,
   });

@@ -5,16 +5,40 @@ function getDistinctValues(arr, col) {
   }
   return Array.from(distinct);
 };
+function parseJwt (token) {
+  var base64Url = token.split('.')[1];
+  var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join(''));
+
+  return JSON.parse(jsonPayload);
+};
+function getCookie (id) {
+  var cookies = document.cookie.split(';');
+
+  // Search for the cookie we want
+  var value = null;
+  for (var i = 0; i < cookies.length; i++) {
+    var cookie = cookies[i].trim();
+    if (cookie.indexOf(id + '=') === 0) {
+      value = cookie.substring(id + '='.length, cookie.length);
+      value = value.split("=")[1];
+      return value;
+    }
+  }
+};
 function removeElementsByClass(className){
   const elements = document.getElementsByClassName(className);
   while(elements.length > 0){
       elements[0].parentNode.removeChild(elements[0]);
   }
-}
+};
 function populateEntries() {
   
+  const userToken= getCookie("googleAuth");
+
   var entries = new Object();
-  
 
   var morning = new Date("Jan 1, 2023 05:00");
   var day = new Date("Jan 1, 2023 10:00");
@@ -25,7 +49,7 @@ function populateEntries() {
 
   // Make a request to the server to retrieve the data from the database
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", "get-entries.php", true);
+  xhr.open("GET", "get-entries.php?user_token=" + userToken, true);
   xhr.onreadystatechange = function() {
     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
       // Parse the response from the server as JSON
@@ -115,7 +139,9 @@ function populateEntries() {
   xhr.send();
 };
 function addEntry(field1, field2, field3, field4, field5, field6, field7) {
-  
+
+  const userToken= getCookie("googleAuth");
+
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "add-entry.php", true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -133,7 +159,7 @@ function addEntry(field1, field2, field3, field4, field5, field6, field7) {
   xhr.send("field1=" + encodeURIComponent(field1) + "&field2=" + encodeURIComponent(field2) +
     "&field3=" + encodeURIComponent(field3) + "&field4=" + encodeURIComponent(field4) +
     "&field5=" + encodeURIComponent(field5) + "&field6=" + encodeURIComponent(field6) + 
-    "&field7=" + encodeURIComponent(field7));
+    "&field7=" + encodeURIComponent(field7) + "&user_token=" + encodeURIComponent(userToken));
 };
 function showList(event) {
   e = event || window.event;
@@ -222,6 +248,9 @@ function addDropdowns() {
 
 };
 function showSession(event) {
+
+  const userToken= getCookie("googleAuth");
+
   var form = document.getElementById("selected-session");
   var form2 = document.getElementById("form-holder");
 
@@ -236,7 +265,7 @@ function showSession(event) {
     var dat = event.currentTarget.dataset.date;
 
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "get-session.php?date=" + dat, true);
+    xhr.open("GET", "get-session.php?date=" + dat + "&user_token=" + userToken, true);
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
 
@@ -375,35 +404,10 @@ function populateExercise() {
   xhr.send();
 
 };
-function getCookie() {
-  var cookies = document.cookie.split('; ');
 
-  console.log(cookies);
-  // iterate over each cookie and check if the user_id cookie exists
-  for (var i = 0; i < cookies.length; i++) {
-    var parts = cookies[i].split('=');
-    var name = parts[0];
-    var value = parts[1];
-    if (name === 'user_id') {
-      // if the user_id cookie exists, do something with the user ID value
-      console.log('User ID:', value);
-      break;
-    }
-  }
-}
-function testCookie() { 
-  var now = new Date();
-  var expiration = new Date(now.getTime() + 20 * 1000);
-  document.cookie = "user_id=user1; expires=" + expiration.toUTCString() + "; path=/";
-}
+
 
 window.onload = function() {
-
-
-  //testCookie();
-
-  getCookie();
-
 
   populateEntries();
 

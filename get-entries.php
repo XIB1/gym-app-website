@@ -1,5 +1,12 @@
 <?php
 
+include "jwt-decode.php";
+
+//get current users oauth_uid
+$user_token = $_GET["user_token"];
+$user_data = parseJwt($user_token);
+$oauth_uid = $user_data['sub'];
+
 // Connect to the database
 $conn = mysqli_connect("34.88.150.1", "app-user", "983298", "gym-db");
 
@@ -29,6 +36,7 @@ left join
     exercise e on l.exe_id = e.exe_id
 where
     deleted_indicator is null
+    and user_id = (select id from users where oauth_uid = '$oauth_uid')
 ");
 
 // Check the result

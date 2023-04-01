@@ -1,5 +1,12 @@
 <?php
 
+include "jwt-decode.php";
+
+//get current users oauth_uid
+$user_token = $_GET["user_token"];
+$user_data = parseJwt($user_token);
+$oauth_uid = $user_data['sub'];
+
 $date = $_GET["date"];
 
 // Connect to the database
@@ -32,6 +39,7 @@ left join
 where
     date = '" . $date . "'
     and deleted_indicator is null
+    and user_id = (select id from users where oauth_uid = '$oauth_uid')
 order by 
     time desc
 ");

@@ -4,6 +4,9 @@
 $conn = mysqli_connect("34.88.150.1", "app-user", "983298", "gym-db");
 
 $oauth_uid = $_POST["oauth_uid"];
+$first_name = $_POST["first_name"];
+$last_name = $_POST["last_name"];
+$email = $_POST["email"];
 
 // Check the connection
 if (!$conn) {
@@ -12,35 +15,42 @@ if (!$conn) {
   exit;
 }
 
-// Execute the query to retrieve the entries from the database
-//$result = mysqli_query($conn, "SELECT Date, Time, Exercise, Weight, Sets, Reps, Effort FROM lifts");
-$result = mysqli_query($conn, "
-select 
-    email
-from
-    users
-where
-    oauth_uid = '$oauth_uid'
+// Execute the query to check if user already exists
+$result1 = mysqli_query($conn, "
+  select 
+      email
+  from
+      users
+  where
+      oauth_uid = '$oauth_uid'
 ");
 
 // Check the result
-if (!$result) {
+if (!$result1) {
   header("HTTP/1.1 500 Internal Server Error");
   echo "Error retrieving entries: " . mysqli_error($conn);
   exit;
 }
 
-// Fetch the entries from the result set
-$entries = array();
-while ($row = mysqli_fetch_assoc($result)) {
-  $entries[] = $row;
-}
+$rowcount = mysqli_num_rows($result1);
+
+//add new user
+if ($rowcount == 0) {
+
+  $sql = "INSERT INTO users (oauth_uid, first_name, last_name, email)
+    VALUES ('$oauth_uid', '$first_name', '$last_name', '$email')";
+
+  if ($conn->query($sql) === TRUE) {
+    echo "New user added successfully";
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+
+} else {
+  echo "User already exists";
+};
 
 // Close the connection
 mysqli_close($conn);
-
-// Return the entries as a JSON-encoded string
-header("Content-Type: application/json");
-echo json_encode($entries);
 
 ?>
