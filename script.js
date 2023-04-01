@@ -5,15 +5,6 @@ function getDistinctValues(arr, col) {
   }
   return Array.from(distinct);
 };
-function parseJwt (token) {
-  var base64Url = token.split('.')[1];
-  var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-  var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
-      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-  }).join(''));
-
-  return JSON.parse(jsonPayload);
-};
 function getCookie (id) {
   var cookies = document.cookie.split(';');
 
@@ -25,8 +16,10 @@ function getCookie (id) {
       value = cookie.substring(id + '='.length, cookie.length);
       value = value.split("=")[1];
       return value;
-    }
-  }
+    };
+  };
+
+  return false
 };
 function removeElementsByClass(className){
   const elements = document.getElementsByClassName(className);
@@ -405,7 +398,14 @@ function populateExercise() {
 
 };
 
-
+const userToken= getCookie("googleAuth");
+if (!getCookie("googleAuth")) {
+  if (window.location.href.includes("local")) {
+    window.location.href = "http://localhost:8000/gym-app-website/index.html"
+  } else {
+    window.location.href = "https://gymlog.xyz/index.html"
+  };
+}
 
 window.onload = function() {
 
