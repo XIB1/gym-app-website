@@ -12,11 +12,12 @@ body::-webkit-scrollbar {
 
 .bg {
   background: linear-gradient(0deg, #00000B 0%, #30303B 85%, #40404B 100%);
+  left: 0;
+  top: 0;
   width: 100vw;
-  bottom: 0%;
-  left: 0px;
-  top: 0px;
+  height: 100vh;
   position: absolute;
+  background-size: cover;
   z-index: -1;
 }
 .bg2 {
