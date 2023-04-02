@@ -12,8 +12,8 @@ body::-webkit-scrollbar {
 
 .bg {
   background: linear-gradient(0deg, #00000B 0%, #30303B 85%, #40404B 100%);
-  width: 100dvw;
-  min-height: calc(100svh - 16px);
+  width: 100vw;
+  bottom: 0%;
   left: 0px;
   top: 0px;
   position: absolute;
