@@ -23,7 +23,7 @@ body::-webkit-scrollbar {
 .bg2 {
   background: #00000B;
   width: 105vw;
-  height: 100%;
+  height: 100lvh;
   top: 0px;
   left: -8px;
   position: fixed;
