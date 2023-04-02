@@ -3,7 +3,6 @@
 html,body{
   overflow-x: visible;
   font-family: 'Trebuchet MS', sans-serif;
-  min-height: 100vh;
   background-attachment: fixed;
 }
 body::-webkit-scrollbar {
@@ -13,18 +12,18 @@ body::-webkit-scrollbar {
 
 .bg {
   background: linear-gradient(0deg, #00000B 0%, #30303B 85%, #40404B 100%);
-  width: calc(100vw + 8px);
-  height: 105vh;
-  left: -8px;
-  top: -8px;
+  width: 100vw;
+  min-height: calc(100svh - 16px);
+  left: 0px;
+  top: 0px;
   position: absolute;
   z-index: -1;
 }
 .bg2 {
   background: #00000B;
   width: 105vw;
-  height: 110%;
-  top: -5%;
+  height: 100svh;
+  top: 0px;
   left: -8px;
   position: fixed;
   z-index: -2;
@@ -359,24 +358,27 @@ body::-webkit-scrollbar {
   padding: 10px;
   border-radius: 5px;
   height: 100%;
+  background: linear-gradient(0deg, rgb(11, 11, 20) 0%, rgb(21, 23, 39) 80%, rgb(18, 18, 32) 100%);
 }
+/*
 .opaque {
-  background-color: rgb(24, 24, 32, 1);
+
+  background: linear-gradient(0deg, rgb(11, 11, 20) 0%, rgb(21, 23, 39) 80%, rgb(18, 18, 32) 100%);
 }
 .transparent {
   background-color: rgb(24, 24, 32, 0.75);
 }
-
+*/
 .form-input {
   position: relative;
   height: 30px;
   width: 90%;
   display: flex;
   margin: 10px;
-  background-color: #272729;
+  background-color: #1a1a25;
   font-family: 'Trebuchet MS', sans-serif;
   font-size: 17px;
-  color: #ccc;
+  color: #ddd;
   padding-left: 10px;
 }
 

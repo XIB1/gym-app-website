@@ -34,6 +34,6 @@ window.onload = function() {
   });
   google.accounts.id.renderButton(
     document.getElementById("button"),
-    { theme: "outline", size: "large", shape: "pill", width: 20 }
+    { theme: "outline", size: "large", shape: "pill", width: 200 }
   );
 };
