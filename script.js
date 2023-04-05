@@ -400,14 +400,27 @@ function populateExercise() {
   xhr.send();
 
 };
-
-const userToken= getCookie("googleAuth");
-if (!getCookie("googleAuth")) {
+function redirLogin() {
   if (window.location.href.includes("local")) {
     window.location.href = "http://localhost:8000/gym-app-website/index.html";
   } else {
     window.location.href = "https://gymlog.xyz/index.html";
   };
+};
+
+const userToken= getCookie("googleAuth");
+if (!getCookie("googleAuth")) {
+  redirLogin();
+} else {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "validate-token.php?user_token=" + userToken, true);
+  xhr.onreadystatechange = function() {
+    console.log(xhr.responseText);
+    if (xhr.responseText != "valid"){
+      redirLogin();
+    };
+  };
+  xhr.send();
 };
 
 window.onload = function() {

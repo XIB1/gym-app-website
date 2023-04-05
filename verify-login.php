@@ -39,6 +39,7 @@ if (!$result1) {
 }
 
 $rowcount = mysqli_num_rows($result1);
+$success = 0;
 
 //add new user
 if ($rowcount == 0) {
@@ -47,13 +48,42 @@ if ($rowcount == 0) {
     VALUES ('$oauth_uid', '$first_name', '$last_name', '$email')";
 
   if ($conn->query($sql) === TRUE) {
-    echo "New user added successfully";
+    $success = 1;
   } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-  }
+    $success = 0;
+  };
+};
 
-} else {
-  echo "User already exists";
+
+if ($rowcount > 0 or $success == 1) {
+  // Generate a random token
+  $token = bin2hex(random_bytes(16));
+
+  // Set the token as a cookie with the HttpOnly and Secure flags
+  setcookie('validationToken', $token, [
+      'expires' => time() + (60 * 60 * 24 * 14), // 2 weeks expiration
+      'path' => '/',
+      'domain' => 'localhost', // Change to your domain name
+      'secure' => true,
+      'httponly' => true,
+      'samesite' => 'Strict'
+  ]);
+  
+  $sql = "
+    update 
+      users 
+    set
+      validation_token = '$token'
+    where
+      oauth_uid = $oauth_uid
+  ";
+
+  if ($conn->query($sql) === TRUE) {
+    $success = 1;
+  } else {
+    $success = 0;
+  };
+
 };
 
 // Close the connection

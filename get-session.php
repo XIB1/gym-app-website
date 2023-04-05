@@ -3,6 +3,7 @@
 include "jwt-decode.php";
 
 //get current users oauth_uid
+$valid_token = $_COOKIE['validationToken'];
 $user_token = $_GET["user_token"];
 $user_data = parseJwt($user_token);
 $oauth_uid = $user_data['sub'];
@@ -19,7 +20,25 @@ if (!$conn) {
   header("HTTP/1.1 500 Internal Server Error");
   echo "Error connecting to database: " . mysqli_connect_error();
   exit;
-}
+};
+
+//validate login token
+$result1 = mysqli_query($conn, "
+  select 
+      email
+  from
+      users
+  where
+      oauth_uid = '$oauth_uid'
+      and validation_token = '$valid_token'
+");
+
+$rowcount = mysqli_num_rows($result1);
+
+if ($rowcount == 0) {
+  echo "invalid login token";
+  exit;
+};
 
 // Execute the query to retrieve the entries from the database
 //$result = mysqli_query($conn, "SELECT Date, Time, Exercise, Weight, Sets, Reps, Effort FROM lifts");

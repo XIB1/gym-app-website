@@ -50,3 +50,57 @@ Stack trace:
 #0 C:\repos\gym-app-website\add-entry.php(33): mysqli->query('INSERT INTO lif...')
 #1 {main}
   thrown in C:\repos\gym-app-website\add-entry.php on line 33
+[05-Apr-2023 18:57:15 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: UPDATE command denied to user 'app-user'@'85.134.64.45' for table 'users' in C:\repos\gym-app-website\verify-login.php:81
+Stack trace:
+#0 C:\repos\gym-app-website\verify-login.php(81): mysqli->query('\r\n    update \r\n...')
+#1 {main}
+  thrown in C:\repos\gym-app-website\verify-login.php on line 81
+[05-Apr-2023 19:14:04 UTC] PHP Warning:  Undefined variable $user_token in C:\repos\gym-app-website\validate-token.php on line 6
+[05-Apr-2023 19:14:04 UTC] PHP Deprecated:  explode(): Passing null to parameter #2 ($string) of type string is deprecated in C:\repos\gym-app-website\jwt-decode.php on line 4
+[05-Apr-2023 19:14:04 UTC] PHP Warning:  Undefined array key 1 in C:\repos\gym-app-website\jwt-decode.php on line 4
+[05-Apr-2023 19:14:04 UTC] PHP Deprecated:  str_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated in C:\repos\gym-app-website\jwt-decode.php on line 5
+[05-Apr-2023 19:14:04 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\repos\gym-app-website\validate-token.php on line 8
+[05-Apr-2023 19:14:04 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'validation_token' in 'where clause' in C:\repos\gym-app-website\validate-token.php:21
+Stack trace:
+#0 C:\repos\gym-app-website\validate-token.php(21): mysqli_query(Object(mysqli), '\r\n  select \r\n  ...')
+#1 {main}
+  thrown in C:\repos\gym-app-website\validate-token.php on line 21
+[05-Apr-2023 19:14:50 UTC] PHP Warning:  Undefined variable $user_token in C:\repos\gym-app-website\validate-token.php on line 6
+[05-Apr-2023 19:14:50 UTC] PHP Deprecated:  explode(): Passing null to parameter #2 ($string) of type string is deprecated in C:\repos\gym-app-website\jwt-decode.php on line 4
+[05-Apr-2023 19:14:50 UTC] PHP Warning:  Undefined array key 1 in C:\repos\gym-app-website\jwt-decode.php on line 4
+[05-Apr-2023 19:14:50 UTC] PHP Deprecated:  str_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated in C:\repos\gym-app-website\jwt-decode.php on line 5
+[05-Apr-2023 19:14:50 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\repos\gym-app-website\validate-token.php on line 8
+[05-Apr-2023 19:14:50 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'validation_token' in 'where clause' in C:\repos\gym-app-website\validate-token.php:21
+Stack trace:
+#0 C:\repos\gym-app-website\validate-token.php(21): mysqli_query(Object(mysqli), '\r\n  select \r\n  ...')
+#1 {main}
+  thrown in C:\repos\gym-app-website\validate-token.php on line 21
+[05-Apr-2023 19:14:54 UTC] PHP Warning:  Undefined variable $user_token in C:\repos\gym-app-website\validate-token.php on line 6
+[05-Apr-2023 19:14:54 UTC] PHP Deprecated:  explode(): Passing null to parameter #2 ($string) of type string is deprecated in C:\repos\gym-app-website\jwt-decode.php on line 4
+[05-Apr-2023 19:14:54 UTC] PHP Warning:  Undefined array key 1 in C:\repos\gym-app-website\jwt-decode.php on line 4
+[05-Apr-2023 19:14:54 UTC] PHP Deprecated:  str_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated in C:\repos\gym-app-website\jwt-decode.php on line 5
+[05-Apr-2023 19:14:54 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\repos\gym-app-website\validate-token.php on line 8
+[05-Apr-2023 19:14:54 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'validation_token' in 'where clause' in C:\repos\gym-app-website\validate-token.php:21
+Stack trace:
+#0 C:\repos\gym-app-website\validate-token.php(21): mysqli_query(Object(mysqli), '\r\n  select \r\n  ...')
+#1 {main}
+  thrown in C:\repos\gym-app-website\validate-token.php on line 21
+[05-Apr-2023 19:15:29 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'validation_token' in 'where clause' in C:\repos\gym-app-website\validate-token.php:22
+Stack trace:
+#0 C:\repos\gym-app-website\validate-token.php(22): mysqli_query(Object(mysqli), '\r\n  select \r\n  ...')
+#1 {main}
+  thrown in C:\repos\gym-app-website\validate-token.php on line 22
+[05-Apr-2023 19:15:30 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'validation_token' in 'where clause' in C:\repos\gym-app-website\validate-token.php:22
+Stack trace:
+#0 C:\repos\gym-app-website\validate-token.php(22): mysqli_query(Object(mysqli), '\r\n  select \r\n  ...')
+#1 {main}
+  thrown in C:\repos\gym-app-website\validate-token.php on line 22
+[05-Apr-2023 19:17:24 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'verification_token' in 'field list' in C:\repos\gym-app-website\verify-login.php:81
+Stack trace:
+#0 C:\repos\gym-app-website\verify-login.php(81): mysqli->query('\r\n    update \r\n...')
+#1 {main}
+  thrown in C:\repos\gym-app-website\verify-login.php on line 81
+[05-Apr-2023 19:28:24 UTC] PHP Warning:  Undefined array key "validationToken" in C:\repos\gym-app-website\validate-token.php on line 5
+[05-Apr-2023 19:29:21 UTC] PHP Warning:  Undefined array key "validationToken" in C:\repos\gym-app-website\validate-token.php on line 5
+[05-Apr-2023 19:30:01 UTC] PHP Warning:  Undefined array key "validationToken" in C:\repos\gym-app-website\validate-token.php on line 5
+[05-Apr-2023 19:43:13 UTC] PHP Warning:  Undefined array key "validationToken" in C:\repos\gym-app-website\validate-token.php on line 5
