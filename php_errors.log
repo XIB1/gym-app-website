@@ -104,3 +104,159 @@ Stack trace:
 [05-Apr-2023 19:29:21 UTC] PHP Warning:  Undefined array key "validationToken" in C:\repos\gym-app-website\validate-token.php on line 5
 [05-Apr-2023 19:30:01 UTC] PHP Warning:  Undefined array key "validationToken" in C:\repos\gym-app-website\validate-token.php on line 5
 [05-Apr-2023 19:43:13 UTC] PHP Warning:  Undefined array key "validationToken" in C:\repos\gym-app-website\validate-token.php on line 5
+[07-Apr-2023 06:36:16 UTC] PHP Fatal error:  Uncaught GuzzleHttp\Exception\ConnectException: Connection refused for URI https://www.googleapis.com/oauth2/v3/certs in C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\StreamHandler.php:328
+Stack trace:
+#0 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\StreamHandler.php(241): GuzzleHttp\Handler\StreamHandler->GuzzleHttp\Handler\{closure}()
+#1 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\StreamHandler.php(322): GuzzleHttp\Handler\StreamHandler->createResource(Object(Closure))
+#2 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\StreamHandler.php(58): GuzzleHttp\Handler\StreamHandler->createStream(Object(GuzzleHttp\Psr7\Request), Array)
+#3 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\PrepareBodyMiddleware.php(35): GuzzleHttp\Handler\StreamHandler->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#4 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Middleware.php(31): GuzzleHttp\PrepareBodyMiddleware->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#5 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\RedirectMiddleware.php(71): GuzzleHttp\Middleware::GuzzleHttp\{closure}(Object(GuzzleHttp\Psr7\Request), Array)
+#6 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Middleware.php(61): GuzzleHttp\RedirectMiddleware->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#7 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\HandlerStack.php(75): GuzzleHttp\Middleware::GuzzleHttp\{closure}(Object(GuzzleHttp\Psr7\Request), Array)
+#8 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Client.php(331): GuzzleHttp\HandlerStack->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#9 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Client.php(168): GuzzleHttp\Client->transfer(Object(GuzzleHttp\Psr7\Request), Array)
+#10 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Client.php(187): GuzzleHttp\Client->requestAsync('GET', Object(GuzzleHttp\Psr7\Uri), Array)
+#11 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\ClientTrait.php(44): GuzzleHttp\Client->request('GET', 'https://www.goo...', Array)
+#12 C:\repos\gym-app-website\vendor\google\apiclient\src\AccessToken\Verify.php(173): GuzzleHttp\Client->get('https://www.goo...')
+#13 C:\repos\gym-app-website\vendor\google\apiclient\src\AccessToken\Verify.php(200): Google\AccessToken\Verify->retrieveCertsFromLocation('https://www.goo...')
+#14 C:\repos\gym-app-website\vendor\google\apiclient\src\AccessToken\Verify.php(105): Google\AccessToken\Verify->getFederatedSignOnCerts()
+#15 C:\repos\gym-app-website\vendor\google\apiclient\src\Client.php(813): Google\AccessToken\Verify->verifyIdToken('eyJhbGciOiJSUzI...', '636033609809-dt...')
+#16 C:\repos\gym-app-website\verify-login.php(21): Google\Client->verifyIdToken('eyJhbGciOiJSUzI...')
+#17 {main}
+
+Next GuzzleHttp\Exception\ConnectException: Connection refused for URI https://www.googleapis.com/oauth2/v3/certs in C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\StreamHandler.php:72
+Stack trace:
+#0 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\PrepareBodyMiddleware.php(35): GuzzleHttp\Handler\StreamHandler->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#1 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Middleware.php(31): GuzzleHttp\PrepareBodyMiddleware->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#2 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\RedirectMiddleware.php(71): GuzzleHttp\Middleware::GuzzleHttp\{closure}(Object(GuzzleHttp\Psr7\Request), Array)
+#3 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Middleware.php(61): GuzzleHttp\RedirectMiddleware->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#4 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\HandlerStack.php(75): GuzzleHttp\Middleware::GuzzleHttp\{closure}(Object(GuzzleHttp\Psr7\Request), Array)
+#5 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Client.php(331): GuzzleHttp\HandlerStack->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#6 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Client.php(168): GuzzleHttp\Client->transfer(Object(GuzzleHttp\Psr7\Request), Array)
+#7 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Client.php(187): GuzzleHttp\Client->requestAsync('GET', Object(GuzzleHttp\Psr7\Uri), Array)
+#8 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\ClientTrait.php(44): GuzzleHttp\Client->request('GET', 'https://www.goo...', Array)
+#9 C:\repos\gym-app-website\vendor\google\apiclient\src\AccessToken\Verify.php(173): GuzzleHttp\Client->get('https://www.goo...')
+#10 C:\repos\gym-app-website\vendor\google\apiclient\src\AccessToken\Verify.php(200): Google\AccessToken\Verify->retrieveCertsFromLocation('https://www.goo...')
+#11 C:\repos\gym-app-website\vendor\google\apiclient\src\AccessToken\Verify.php(105): Google\AccessToken\Verify->getFederatedSignOnCerts()
+#12 C:\repos\gym-app-website\vendor\google\apiclient\src\Client.php(813): Google\AccessToken\Verify->verifyIdToken('eyJhbGciOiJSUzI...', '636033609809-dt...')
+#13 C:\repos\gym-app-website\verify-login.php(21): Google\Client->verifyIdToken('eyJhbGciOiJSUzI...')
+#14 {main}
+  thrown in C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\StreamHandler.php on line 72
+[07-Apr-2023 06:38:23 UTC] PHP Fatal error:  Uncaught GuzzleHttp\Exception\ConnectException: Connection refused for URI https://www.googleapis.com/oauth2/v3/certs in C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\StreamHandler.php:328
+Stack trace:
+#0 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\StreamHandler.php(241): GuzzleHttp\Handler\StreamHandler->GuzzleHttp\Handler\{closure}()
+#1 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\StreamHandler.php(322): GuzzleHttp\Handler\StreamHandler->createResource(Object(Closure))
+#2 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\StreamHandler.php(58): GuzzleHttp\Handler\StreamHandler->createStream(Object(GuzzleHttp\Psr7\Request), Array)
+#3 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\PrepareBodyMiddleware.php(35): GuzzleHttp\Handler\StreamHandler->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#4 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Middleware.php(31): GuzzleHttp\PrepareBodyMiddleware->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#5 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\RedirectMiddleware.php(71): GuzzleHttp\Middleware::GuzzleHttp\{closure}(Object(GuzzleHttp\Psr7\Request), Array)
+#6 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Middleware.php(61): GuzzleHttp\RedirectMiddleware->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#7 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\HandlerStack.php(75): GuzzleHttp\Middleware::GuzzleHttp\{closure}(Object(GuzzleHttp\Psr7\Request), Array)
+#8 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Client.php(331): GuzzleHttp\HandlerStack->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#9 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Client.php(168): GuzzleHttp\Client->transfer(Object(GuzzleHttp\Psr7\Request), Array)
+#10 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Client.php(187): GuzzleHttp\Client->requestAsync('GET', Object(GuzzleHttp\Psr7\Uri), Array)
+#11 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\ClientTrait.php(44): GuzzleHttp\Client->request('GET', 'https://www.goo...', Array)
+#12 C:\repos\gym-app-website\vendor\google\apiclient\src\AccessToken\Verify.php(173): GuzzleHttp\Client->get('https://www.goo...')
+#13 C:\repos\gym-app-website\vendor\google\apiclient\src\AccessToken\Verify.php(200): Google\AccessToken\Verify->retrieveCertsFromLocation('https://www.goo...')
+#14 C:\repos\gym-app-website\vendor\google\apiclient\src\AccessToken\Verify.php(105): Google\AccessToken\Verify->getFederatedSignOnCerts()
+#15 C:\repos\gym-app-website\vendor\google\apiclient\src\Client.php(813): Google\AccessToken\Verify->verifyIdToken('eyJhbGciOiJSUzI...', '636033609809-dt...')
+#16 C:\repos\gym-app-website\verify-login.php(21): Google\Client->verifyIdToken('eyJhbGciOiJSUzI...')
+#17 {main}
+
+Next GuzzleHttp\Exception\ConnectException: Connection refused for URI https://www.googleapis.com/oauth2/v3/certs in C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\StreamHandler.php:72
+Stack trace:
+#0 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\PrepareBodyMiddleware.php(35): GuzzleHttp\Handler\StreamHandler->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#1 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Middleware.php(31): GuzzleHttp\PrepareBodyMiddleware->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#2 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\RedirectMiddleware.php(71): GuzzleHttp\Middleware::GuzzleHttp\{closure}(Object(GuzzleHttp\Psr7\Request), Array)
+#3 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Middleware.php(61): GuzzleHttp\RedirectMiddleware->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#4 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\HandlerStack.php(75): GuzzleHttp\Middleware::GuzzleHttp\{closure}(Object(GuzzleHttp\Psr7\Request), Array)
+#5 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Client.php(331): GuzzleHttp\HandlerStack->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#6 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Client.php(168): GuzzleHttp\Client->transfer(Object(GuzzleHttp\Psr7\Request), Array)
+#7 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Client.php(187): GuzzleHttp\Client->requestAsync('GET', Object(GuzzleHttp\Psr7\Uri), Array)
+#8 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\ClientTrait.php(44): GuzzleHttp\Client->request('GET', 'https://www.goo...', Array)
+#9 C:\repos\gym-app-website\vendor\google\apiclient\src\AccessToken\Verify.php(173): GuzzleHttp\Client->get('https://www.goo...')
+#10 C:\repos\gym-app-website\vendor\google\apiclient\src\AccessToken\Verify.php(200): Google\AccessToken\Verify->retrieveCertsFromLocation('https://www.goo...')
+#11 C:\repos\gym-app-website\vendor\google\apiclient\src\AccessToken\Verify.php(105): Google\AccessToken\Verify->getFederatedSignOnCerts()
+#12 C:\repos\gym-app-website\vendor\google\apiclient\src\Client.php(813): Google\AccessToken\Verify->verifyIdToken('eyJhbGciOiJSUzI...', '636033609809-dt...')
+#13 C:\repos\gym-app-website\verify-login.php(21): Google\Client->verifyIdToken('eyJhbGciOiJSUzI...')
+#14 {main}
+  thrown in C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\StreamHandler.php on line 72
+[07-Apr-2023 07:07:41 UTC] PHP Fatal error:  Uncaught GuzzleHttp\Exception\RequestException: cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://www.googleapis.com/oauth2/v3/certs in C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\CurlFactory.php:211
+Stack trace:
+#0 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\CurlFactory.php(158): GuzzleHttp\Handler\CurlFactory::createRejection(Object(GuzzleHttp\Handler\EasyHandle), Array)
+#1 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\CurlFactory.php(110): GuzzleHttp\Handler\CurlFactory::finishError(Object(GuzzleHttp\Handler\CurlHandler), Object(GuzzleHttp\Handler\EasyHandle), Object(GuzzleHttp\Handler\CurlFactory))
+#2 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\CurlHandler.php(47): GuzzleHttp\Handler\CurlFactory::finish(Object(GuzzleHttp\Handler\CurlHandler), Object(GuzzleHttp\Handler\EasyHandle), Object(GuzzleHttp\Handler\CurlFactory))
+#3 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\Proxy.php(28): GuzzleHttp\Handler\CurlHandler->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#4 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\Proxy.php(48): GuzzleHttp\Handler\Proxy::GuzzleHttp\Handler\{closure}(Object(GuzzleHttp\Psr7\Request), Array)
+#5 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\PrepareBodyMiddleware.php(35): GuzzleHttp\Handler\Proxy::GuzzleHttp\Handler\{closure}(Object(GuzzleHttp\Psr7\Request), Array)
+#6 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Middleware.php(31): GuzzleHttp\PrepareBodyMiddleware->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#7 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\RedirectMiddleware.php(71): GuzzleHttp\Middleware::GuzzleHttp\{closure}(Object(GuzzleHttp\Psr7\Request), Array)
+#8 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Middleware.php(61): GuzzleHttp\RedirectMiddleware->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#9 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\HandlerStack.php(75): GuzzleHttp\Middleware::GuzzleHttp\{closure}(Object(GuzzleHttp\Psr7\Request), Array)
+#10 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Client.php(331): GuzzleHttp\HandlerStack->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#11 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Client.php(168): GuzzleHttp\Client->transfer(Object(GuzzleHttp\Psr7\Request), Array)
+#12 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Client.php(187): GuzzleHttp\Client->requestAsync('GET', Object(GuzzleHttp\Psr7\Uri), Array)
+#13 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\ClientTrait.php(44): GuzzleHttp\Client->request('GET', 'https://www.goo...', Array)
+#14 C:\repos\gym-app-website\vendor\google\apiclient\src\AccessToken\Verify.php(173): GuzzleHttp\Client->get('https://www.goo...')
+#15 C:\repos\gym-app-website\vendor\google\apiclient\src\AccessToken\Verify.php(200): Google\AccessToken\Verify->retrieveCertsFromLocation('https://www.goo...')
+#16 C:\repos\gym-app-website\vendor\google\apiclient\src\AccessToken\Verify.php(105): Google\AccessToken\Verify->getFederatedSignOnCerts()
+#17 C:\repos\gym-app-website\vendor\google\apiclient\src\Client.php(813): Google\AccessToken\Verify->verifyIdToken('eyJhbGciOiJSUzI...', '636033609809-dt...')
+#18 C:\repos\gym-app-website\verify-login.php(21): Google\Client->verifyIdToken('eyJhbGciOiJSUzI...')
+#19 {main}
+  thrown in C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\CurlFactory.php on line 211
+[07-Apr-2023 07:09:40 UTC] PHP Fatal error:  Uncaught GuzzleHttp\Exception\RequestException: cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://www.googleapis.com/oauth2/v3/certs in C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\CurlFactory.php:211
+Stack trace:
+#0 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\CurlFactory.php(158): GuzzleHttp\Handler\CurlFactory::createRejection(Object(GuzzleHttp\Handler\EasyHandle), Array)
+#1 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\CurlFactory.php(110): GuzzleHttp\Handler\CurlFactory::finishError(Object(GuzzleHttp\Handler\CurlHandler), Object(GuzzleHttp\Handler\EasyHandle), Object(GuzzleHttp\Handler\CurlFactory))
+#2 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\CurlHandler.php(47): GuzzleHttp\Handler\CurlFactory::finish(Object(GuzzleHttp\Handler\CurlHandler), Object(GuzzleHttp\Handler\EasyHandle), Object(GuzzleHttp\Handler\CurlFactory))
+#3 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\Proxy.php(28): GuzzleHttp\Handler\CurlHandler->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#4 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\Proxy.php(48): GuzzleHttp\Handler\Proxy::GuzzleHttp\Handler\{closure}(Object(GuzzleHttp\Psr7\Request), Array)
+#5 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\PrepareBodyMiddleware.php(35): GuzzleHttp\Handler\Proxy::GuzzleHttp\Handler\{closure}(Object(GuzzleHttp\Psr7\Request), Array)
+#6 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Middleware.php(31): GuzzleHttp\PrepareBodyMiddleware->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#7 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\RedirectMiddleware.php(71): GuzzleHttp\Middleware::GuzzleHttp\{closure}(Object(GuzzleHttp\Psr7\Request), Array)
+#8 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Middleware.php(61): GuzzleHttp\RedirectMiddleware->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#9 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\HandlerStack.php(75): GuzzleHttp\Middleware::GuzzleHttp\{closure}(Object(GuzzleHttp\Psr7\Request), Array)
+#10 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Client.php(331): GuzzleHttp\HandlerStack->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#11 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Client.php(168): GuzzleHttp\Client->transfer(Object(GuzzleHttp\Psr7\Request), Array)
+#12 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Client.php(187): GuzzleHttp\Client->requestAsync('GET', Object(GuzzleHttp\Psr7\Uri), Array)
+#13 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\ClientTrait.php(44): GuzzleHttp\Client->request('GET', 'https://www.goo...', Array)
+#14 C:\repos\gym-app-website\vendor\google\apiclient\src\AccessToken\Verify.php(173): GuzzleHttp\Client->get('https://www.goo...')
+#15 C:\repos\gym-app-website\vendor\google\apiclient\src\AccessToken\Verify.php(200): Google\AccessToken\Verify->retrieveCertsFromLocation('https://www.goo...')
+#16 C:\repos\gym-app-website\vendor\google\apiclient\src\AccessToken\Verify.php(105): Google\AccessToken\Verify->getFederatedSignOnCerts()
+#17 C:\repos\gym-app-website\vendor\google\apiclient\src\Client.php(813): Google\AccessToken\Verify->verifyIdToken('eyJhbGciOiJSUzI...', '636033609809-dt...')
+#18 C:\repos\gym-app-website\verify-login.php(21): Google\Client->verifyIdToken('eyJhbGciOiJSUzI...')
+#19 {main}
+  thrown in C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\CurlFactory.php on line 211
+[07-Apr-2023 07:11:41 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Google\Client::request() in C:\repos\gym-app-website\verify-login.php:21
+Stack trace:
+#0 {main}
+  thrown in C:\repos\gym-app-website\verify-login.php on line 21
+[07-Apr-2023 07:13:41 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Google\Client::request() in C:\repos\gym-app-website\verify-login.php:21
+Stack trace:
+#0 {main}
+  thrown in C:\repos\gym-app-website\verify-login.php on line 21
+[07-Apr-2023 07:13:58 UTC] PHP Fatal error:  Uncaught GuzzleHttp\Exception\RequestException: cURL error 77: error setting certificate file: /path/to/downloaded/cacert.pem (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://www.googleapis.com/oauth2/v3/certs in C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\CurlFactory.php:211
+Stack trace:
+#0 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\CurlFactory.php(158): GuzzleHttp\Handler\CurlFactory::createRejection(Object(GuzzleHttp\Handler\EasyHandle), Array)
+#1 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\CurlFactory.php(110): GuzzleHttp\Handler\CurlFactory::finishError(Object(GuzzleHttp\Handler\CurlHandler), Object(GuzzleHttp\Handler\EasyHandle), Object(GuzzleHttp\Handler\CurlFactory))
+#2 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\CurlHandler.php(47): GuzzleHttp\Handler\CurlFactory::finish(Object(GuzzleHttp\Handler\CurlHandler), Object(GuzzleHttp\Handler\EasyHandle), Object(GuzzleHttp\Handler\CurlFactory))
+#3 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\Proxy.php(28): GuzzleHttp\Handler\CurlHandler->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#4 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\Proxy.php(48): GuzzleHttp\Handler\Proxy::GuzzleHttp\Handler\{closure}(Object(GuzzleHttp\Psr7\Request), Array)
+#5 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\PrepareBodyMiddleware.php(35): GuzzleHttp\Handler\Proxy::GuzzleHttp\Handler\{closure}(Object(GuzzleHttp\Psr7\Request), Array)
+#6 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Middleware.php(31): GuzzleHttp\PrepareBodyMiddleware->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#7 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\RedirectMiddleware.php(71): GuzzleHttp\Middleware::GuzzleHttp\{closure}(Object(GuzzleHttp\Psr7\Request), Array)
+#8 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Middleware.php(61): GuzzleHttp\RedirectMiddleware->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#9 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\HandlerStack.php(75): GuzzleHttp\Middleware::GuzzleHttp\{closure}(Object(GuzzleHttp\Psr7\Request), Array)
+#10 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Client.php(331): GuzzleHttp\HandlerStack->__invoke(Object(GuzzleHttp\Psr7\Request), Array)
+#11 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Client.php(168): GuzzleHttp\Client->transfer(Object(GuzzleHttp\Psr7\Request), Array)
+#12 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Client.php(187): GuzzleHttp\Client->requestAsync('GET', Object(GuzzleHttp\Psr7\Uri), Array)
+#13 C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\ClientTrait.php(44): GuzzleHttp\Client->request('GET', 'https://www.goo...', Array)
+#14 C:\repos\gym-app-website\vendor\google\apiclient\src\AccessToken\Verify.php(173): GuzzleHttp\Client->get('https://www.goo...')
+#15 C:\repos\gym-app-website\vendor\google\apiclient\src\AccessToken\Verify.php(200): Google\AccessToken\Verify->retrieveCertsFromLocation('https://www.goo...')
+#16 C:\repos\gym-app-website\vendor\google\apiclient\src\AccessToken\Verify.php(105): Google\AccessToken\Verify->getFederatedSignOnCerts()
+#17 C:\repos\gym-app-website\vendor\google\apiclient\src\Client.php(813): Google\AccessToken\Verify->verifyIdToken('eyJhbGciOiJSUzI...', '636033609809-dt...')
+#18 C:\repos\gym-app-website\verify-login.php(21): Google\Client->verifyIdToken('eyJhbGciOiJSUzI...')
+#19 {main}
+  thrown in C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\CurlFactory.php on line 211
+[07-Apr-2023 07:17:37 UTC] PHP Warning:  Array to string conversion in C:\repos\gym-app-website\verify-login.php on line 24

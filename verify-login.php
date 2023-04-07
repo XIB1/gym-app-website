@@ -1,15 +1,34 @@
 <?php
 
-include "jwt-decode.php";
+require_once 'C:/repos/gym-app-website/vendor/autoload.php';
+//require_once '/var/www/html/gym-app-website/vendor/autoload.php';
+
+include 'jwt-decode.php';
 
 $user_token = $_POST["user_token"];
 
 $user_data = parseJwt($user_token);
 
-$oauth_uid = $user_data['sub'];
+//$oauth_uid = $user_data['sub'];
 $first_name = $user_data['given_name'];
 $last_name = $user_data['family_name'];
 $email = $user_data['email'];
+
+$CLIENT_ID = '636033609809-dt5m30p5qurko02s9docsqlnoc6232nb.apps.googleusercontent.com';
+
+//validate login with google client
+$client = new Google_Client(['client_id' => $CLIENT_ID]);  // Specify the CLIENT_ID of the app that accesses the backend
+$payload = $client->verifyIdToken($user_token);
+if ($payload) {
+  $oauth_uid = $payload['sub'];
+  echo json_encode($payload);
+  // If request specified a G Suite domain:
+  //$domain = $payload['hd'];
+} else {
+  echo 'failed to validate login';
+  exit;
+  // Invalid ID token
+}
 
 // Connect to the database
 $conn = mysqli_connect("34.88.150.1", "app-user", "983298", "gym-db");
