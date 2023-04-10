@@ -81,7 +81,7 @@ if ($rowcount == 0) {
 };
 
 
-if (strpos(gethostname(), 'localhost') !== false || $_SERVER['SERVER_ADDR'] == '127.0.0.1') {
+if ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_ADDR'] === '127.0.0.1') {
   $domain = 'gymlog.xyz';
 } else {
   $domain = 'localhost';

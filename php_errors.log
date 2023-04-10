@@ -297,3 +297,4 @@ Stack trace:
 [09-Apr-2023 16:30:59 UTC] PHP Warning:  Undefined array key "googleAuth" in C:\repos\gym-app-website\get-entries.php on line 11
 [10-Apr-2023 12:09:38 UTC] PHP Warning:  Undefined array key "family_name" in C:\repos\gym-app-website\verify-login.php on line 14
 [10-Apr-2023 12:09:53 UTC] PHP Warning:  Undefined array key "id" in C:\repos\gym-app-website\restore-entry.php on line 7
+[10-Apr-2023 18:59:15 UTC] PHP Warning:  Undefined array key "family_name" in C:\repos\gym-app-website\verify-login.php on line 21
