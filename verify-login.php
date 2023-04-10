@@ -1,9 +1,13 @@
 <?php
 
+echo 'start; ';
+
 if (strpos(gethostname(), 'localhost') !== false || $_SERVER['SERVER_ADDR'] == '127.0.0.1') {
   require_once '/var/www/html/gym-app-website/vendor/autoload.php';
+  echo 'on server; ';
 } else {
   require_once 'C:/repos/gym-app-website/vendor/autoload.php';
+  echo 'on local; ';
 };
 
 include 'jwt-decode.php';
