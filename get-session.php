@@ -1,12 +1,14 @@
 <?php
 
-include "jwt-decode.php";
+//include "jwt-decode.php";
 
 //get current users oauth_uid
-$valid_token = $_COOKIE['validationToken'];
-$user_token = $_GET["user_token"];
-$user_data = parseJwt($user_token);
-$oauth_uid = $user_data['sub'];
+$valid_token = hash('sha256', $_COOKIE['validationToken']);
+//$user_token = $_GET["user_token"];
+//$user_data = parseJwt($user_token);
+//$oauth_uid = $user_data['sub'];
+
+$oauth_uid = $_COOKIE['googleAuth'];
 
 $date = $_GET["date"];
 

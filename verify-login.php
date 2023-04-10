@@ -74,25 +74,44 @@ if ($rowcount == 0) {
 };
 
 
+if (strpos(gethostname(), 'localhost') !== false || $_SERVER['SERVER_ADDR'] == '127.0.0.1') {
+  $domain = 'gymlog.xyz';
+} else {
+  $domain = 'localhost';
+};
+
+echo $domain;
+
+
 if ($rowcount > 0 or $success == 1) {
   // Generate a random token
   $token = bin2hex(random_bytes(16));
+  $hashedtoken = hash('sha256', $token);
 
   // Set the token as a cookie with the HttpOnly and Secure flags
   setcookie('validationToken', $token, [
       'expires' => time() + (60 * 60 * 24 * 14), // 2 weeks expiration
       'path' => '/',
-      'domain' => 'localhost', // Change to your domain name
+      'domain' => $domain,
       'secure' => true,
       'httponly' => true,
       'samesite' => 'Strict'
+  ]);
+
+  setcookie('googleAuth', $oauth_uid, [
+    'expires' => time() + (60 * 60 * 24 * 14), // 2 weeks expiration
+    'path' => '/',
+    'domain' => $domain,
+    'secure' => false,
+    'httponly' => false,
+    'samesite' => 'Strict'
   ]);
   
   $sql = "
     update 
       users 
     set
-      validation_token = '$token'
+      validation_token = '$hashedtoken'
     where
       oauth_uid = $oauth_uid
   ";

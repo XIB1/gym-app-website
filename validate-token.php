@@ -1,12 +1,14 @@
 <?php
 
-include "jwt-decode.php";
+//include "jwt-decode.php";
 
-$valid_token = $_COOKIE['validationToken'];
-$user_token = $_GET["user_token"];
-$user_data = parseJwt($user_token);
+$oauth_uid = $_COOKIE['googleAuth'];
+$valid_token = hash('sha256', $_COOKIE['validationToken']);
+//$user_token = $_GET["user_token"];
+//$user_data = parseJwt($user_token);
 
-$oauth_uid = $user_data['sub'];
+//$oauth_uid = $user_data['sub'];
+
 
 // Connect to the database
 $conn = mysqli_connect("34.88.150.1", "app-user", "983298", "gym-db");

@@ -1,11 +1,11 @@
 <?php
   
-include "jwt-decode.php";
+//include "jwt-decode.php";
 
 ini_set('display_errors', 'on');
 error_reporting(E_ALL); 
 
-$valid_token = $_COOKIE['validationToken'];
+$valid_token = hash('sha256', $_COOKIE['validationToken']);
 
 $field1 = $_POST["field1"];
 $field2 = $_POST["field2"];
@@ -14,11 +14,13 @@ $field4 = $_POST["field4"];
 $field5 = $_POST["field5"];
 $field6 = $_POST["field6"];
 $field7 = $_POST["field7"];
-$user_token = $_POST["user_token"];
+//$user_token = $_POST["user_token"];
 
-$user_data = parseJwt($user_token);
+//$user_data = parseJwt($user_token);
 
-$oauth_uid = $user_data['sub'];
+//$oauth_uid = $user_data['sub'];
+
+$oauth_uid = $_COOKIE['googleAuth'];
 
 
 // Connect to database and insert the new entry

@@ -260,3 +260,40 @@ Stack trace:
 #19 {main}
   thrown in C:\repos\gym-app-website\vendor\guzzlehttp\guzzle\src\Handler\CurlFactory.php on line 211
 [07-Apr-2023 07:17:37 UTC] PHP Warning:  Array to string conversion in C:\repos\gym-app-website\verify-login.php on line 24
+[09-Apr-2023 16:18:09 UTC] PHP Warning:  Undefined array key "validationToken" in C:\repos\gym-app-website\validate-token.php on line 5
+[09-Apr-2023 16:18:09 UTC] PHP Deprecated:  hash(): Passing null to parameter #2 ($data) of type string is deprecated in C:\repos\gym-app-website\validate-token.php on line 5
+[09-Apr-2023 16:18:09 UTC] PHP Warning:  Undefined variable $user_data in C:\repos\gym-app-website\validate-token.php on line 9
+[09-Apr-2023 16:18:09 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\repos\gym-app-website\validate-token.php on line 9
+[09-Apr-2023 16:18:09 UTC] PHP Warning:  Undefined array key "validationToken" in C:\repos\gym-app-website\get-entries.php on line 6
+[09-Apr-2023 16:18:09 UTC] PHP Deprecated:  hash(): Passing null to parameter #2 ($data) of type string is deprecated in C:\repos\gym-app-website\get-entries.php on line 6
+[09-Apr-2023 16:19:10 UTC] PHP Warning:  Undefined array key "validationToken" in C:\repos\gym-app-website\validate-token.php on line 5
+[09-Apr-2023 16:19:10 UTC] PHP Deprecated:  hash(): Passing null to parameter #2 ($data) of type string is deprecated in C:\repos\gym-app-website\validate-token.php on line 5
+[09-Apr-2023 16:19:10 UTC] PHP Warning:  Undefined variable $user_data in C:\repos\gym-app-website\validate-token.php on line 9
+[09-Apr-2023 16:19:10 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\repos\gym-app-website\validate-token.php on line 9
+[09-Apr-2023 16:19:10 UTC] PHP Warning:  Undefined array key "validationToken" in C:\repos\gym-app-website\get-entries.php on line 6
+[09-Apr-2023 16:19:10 UTC] PHP Deprecated:  hash(): Passing null to parameter #2 ($data) of type string is deprecated in C:\repos\gym-app-website\get-entries.php on line 6
+[09-Apr-2023 16:22:14 UTC] PHP Warning:  Undefined array key "validationToken" in C:\repos\gym-app-website\validate-token.php on line 5
+[09-Apr-2023 16:22:14 UTC] PHP Deprecated:  hash(): Passing null to parameter #2 ($data) of type string is deprecated in C:\repos\gym-app-website\validate-token.php on line 5
+[09-Apr-2023 16:22:14 UTC] PHP Warning:  Undefined array key "validationToken" in C:\repos\gym-app-website\get-entries.php on line 6
+[09-Apr-2023 16:22:14 UTC] PHP Deprecated:  hash(): Passing null to parameter #2 ($data) of type string is deprecated in C:\repos\gym-app-website\get-entries.php on line 6
+[09-Apr-2023 16:23:03 UTC] PHP Warning:  Undefined array key "validationToken" in C:\repos\gym-app-website\validate-token.php on line 6
+[09-Apr-2023 16:23:03 UTC] PHP Deprecated:  hash(): Passing null to parameter #2 ($data) of type string is deprecated in C:\repos\gym-app-website\validate-token.php on line 6
+[09-Apr-2023 16:23:04 UTC] PHP Warning:  Undefined array key "validationToken" in C:\repos\gym-app-website\get-entries.php on line 6
+[09-Apr-2023 16:23:04 UTC] PHP Deprecated:  hash(): Passing null to parameter #2 ($data) of type string is deprecated in C:\repos\gym-app-website\get-entries.php on line 6
+[09-Apr-2023 16:30:02 UTC] PHP Warning:  Undefined array key "validationToken" in C:\repos\gym-app-website\get-entries.php on line 6
+[09-Apr-2023 16:30:02 UTC] PHP Deprecated:  hash(): Passing null to parameter #2 ($data) of type string is deprecated in C:\repos\gym-app-website\get-entries.php on line 6
+[09-Apr-2023 16:30:02 UTC] PHP Warning:  Undefined array key "googleAuth" in C:\repos\gym-app-website\get-entries.php on line 11
+[09-Apr-2023 16:30:36 UTC] PHP Warning:  Undefined array key "validationToken" in C:\repos\gym-app-website\get-entries.php on line 6
+[09-Apr-2023 16:30:36 UTC] PHP Deprecated:  hash(): Passing null to parameter #2 ($data) of type string is deprecated in C:\repos\gym-app-website\get-entries.php on line 6
+[09-Apr-2023 16:30:36 UTC] PHP Warning:  Undefined array key "googleAuth" in C:\repos\gym-app-website\get-entries.php on line 11
+[09-Apr-2023 16:30:38 UTC] PHP Warning:  Undefined array key "validationToken" in C:\repos\gym-app-website\get-entries.php on line 6
+[09-Apr-2023 16:30:38 UTC] PHP Deprecated:  hash(): Passing null to parameter #2 ($data) of type string is deprecated in C:\repos\gym-app-website\get-entries.php on line 6
+[09-Apr-2023 16:30:38 UTC] PHP Warning:  Undefined array key "googleAuth" in C:\repos\gym-app-website\get-entries.php on line 11
+[09-Apr-2023 16:30:39 UTC] PHP Warning:  Undefined array key "validationToken" in C:\repos\gym-app-website\get-entries.php on line 6
+[09-Apr-2023 16:30:39 UTC] PHP Deprecated:  hash(): Passing null to parameter #2 ($data) of type string is deprecated in C:\repos\gym-app-website\get-entries.php on line 6
+[09-Apr-2023 16:30:39 UTC] PHP Warning:  Undefined array key "googleAuth" in C:\repos\gym-app-website\get-entries.php on line 11
+[09-Apr-2023 16:30:59 UTC] PHP Warning:  Undefined array key "validationToken" in C:\repos\gym-app-website\get-entries.php on line 6
+[09-Apr-2023 16:30:59 UTC] PHP Deprecated:  hash(): Passing null to parameter #2 ($data) of type string is deprecated in C:\repos\gym-app-website\get-entries.php on line 6
+[09-Apr-2023 16:30:59 UTC] PHP Warning:  Undefined array key "googleAuth" in C:\repos\gym-app-website\get-entries.php on line 11
+[10-Apr-2023 12:09:38 UTC] PHP Warning:  Undefined array key "family_name" in C:\repos\gym-app-website\verify-login.php on line 14
+[10-Apr-2023 12:09:53 UTC] PHP Warning:  Undefined array key "id" in C:\repos\gym-app-website\restore-entry.php on line 7

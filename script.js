@@ -29,7 +29,7 @@ function removeElementsByClass(className){
 };
 function populateEntries() {
   
-  const userToken = getCookie("googleAuth");
+  //const userToken = getCookie("googleAuth");
 
   var entries = new Object();
 
@@ -42,10 +42,11 @@ function populateEntries() {
 
   // Make a request to the server to retrieve the data from the database
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", "get-entries.php?user_token=" + userToken, true);
+  xhr.open("GET", "get-entries.php", true); //?user_token=" + userToken, true);
   xhr.onreadystatechange = function() {
     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
       // Parse the response from the server as JSON
+
       entries = JSON.parse(xhr.responseText);
 
       const dates = getDistinctValues(entries, "date").sort().reverse();
@@ -133,7 +134,7 @@ function populateEntries() {
 };
 function addEntry(field1, field2, field3, field4, field5, field6, field7) {
 
-  const userToken= getCookie("googleAuth");
+  //const userToken= getCookie("googleAuth");
 
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "add-entry.php", true);
@@ -152,7 +153,7 @@ function addEntry(field1, field2, field3, field4, field5, field6, field7) {
   xhr.send("field1=" + encodeURIComponent(field1) + "&field2=" + encodeURIComponent(field2) +
     "&field3=" + encodeURIComponent(field3) + "&field4=" + encodeURIComponent(field4) +
     "&field5=" + encodeURIComponent(field5) + "&field6=" + encodeURIComponent(field6) + 
-    "&field7=" + encodeURIComponent(field7) + "&user_token=" + encodeURIComponent(userToken));
+    "&field7=" + encodeURIComponent(field7)); // + "&user_token=" + encodeURIComponent(userToken));
 };
 function showList(event) {
   e = event || window.event;
@@ -242,7 +243,7 @@ function addDropdowns() {
 };
 function showSession(event) {
 
-  const userToken= getCookie("googleAuth");
+  //const userToken= getCookie("googleAuth");
 
   var form = document.getElementById("selected-session");
   var form2 = document.getElementById("form-holder");
@@ -258,7 +259,7 @@ function showSession(event) {
     var dat = event.currentTarget.dataset.date;
 
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "get-session.php?date=" + dat + "&user_token=" + userToken, true);
+    xhr.open("GET", "get-session.php?date=" + dat, true); // + "&user_token=" + userToken, true);
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
 
@@ -402,20 +403,18 @@ function populateExercise() {
 };
 function redirLogin() {
   if (window.location.href.includes("local")) {
-    window.location.href = "http://localhost:8000/gym-app-website/index.html";
+    window.location.href = "https://localhost:8000/gym-app-website/index.html";
   } else {
     window.location.href = "https://gymlog.xyz/index.html";
   };
 };
 
-const userToken= getCookie("googleAuth");
 if (!getCookie("googleAuth")) {
   redirLogin();
 } else {
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", "validate-token.php?user_token=" + userToken, true);
+  xhr.open("GET", "validate-token.php", false);
   xhr.onreadystatechange = function() {
-    console.log(xhr.responseText);
     if (xhr.responseText != "valid"){
       redirLogin();
     };
@@ -525,7 +524,7 @@ window.onload = function() {
       document.cookie = "googleAuth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
       if (window.location.href.includes("local")) {
-        window.location.href = "http://localhost:8000/gym-app-website/index.html";
+        window.location.href = "https://localhost:8000/gym-app-website/index.html";
       } else {
         window.location.href = "https://gymlog.xyz/index.html";
       };
