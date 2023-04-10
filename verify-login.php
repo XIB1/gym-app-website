@@ -1,7 +1,10 @@
 <?php
 
-require_once 'C:/repos/gym-app-website/vendor/autoload.php';
-//require_once '/var/www/html/gym-app-website/vendor/autoload.php';
+if (strpos(gethostname(), 'localhost') !== false || $_SERVER['SERVER_ADDR'] == '127.0.0.1') {
+  require_once '/var/www/html/gym-app-website/vendor/autoload.php';
+} else {
+  require_once 'C:/repos/gym-app-website/vendor/autoload.php';
+};
 
 include 'jwt-decode.php';
 
