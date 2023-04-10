@@ -1,13 +1,9 @@
 <?php
 
-echo 'start; ';
-
 if ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_ADDR'] === '127.0.0.1') {
   require_once 'C:/repos/gym-app-website/vendor/autoload.php';
-  echo 'on local; ';
 } else {
   require_once '/var/www/html/gym-app-website/vendor/autoload.php';
-  echo 'on server; ';
 };
 
 include 'jwt-decode.php';
@@ -82,9 +78,9 @@ if ($rowcount == 0) {
 
 
 if ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_ADDR'] === '127.0.0.1') {
-  $domain = 'gymlog.xyz';
-} else {
   $domain = 'localhost';
+} else {
+  $domain = 'gymlog.xyz';
 };
 
 echo $domain;
